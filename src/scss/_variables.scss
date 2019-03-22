@@ -1,0 +1,9 @@
+$transparentBlack: rgba(20, 20, 20, .8);
+$white: rgb(239, 232, 232);
+$gold: #C7900C;
+
+@mixin hover() {
+   background-color: $transparentBlack;
+   color: $gold;
+   border: 1px solid $gold;
+}

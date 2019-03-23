@@ -13,14 +13,17 @@
 </head>
 
 <body>
-   <div class="container">
+   <div id="top" class="container">
 
       <nav class="menu">
          <ul class="menu__list">
             <div class="menu__logo">Nazwa<br><span>Salon sukien ślubnych</span></div>
-            <li class="menu__item"><a class="menu__link" href="#catalog">Suknie</a></li>
-            <li class="menu__item"><a class="menu__link" href="">O nas</a></li>
-            <li class="menu__item"><a class="menu__link" href="">Kontakt</a></li>
+            <li class="menu__item"><a class="menu__link" href="#catalog"
+                  aria-label="Link to the catalog section">Suknie</a></li>
+            <li class="menu__item"><a class="menu__link" href="#about" aria-label="Link to the 'about' section">Onas</a>
+            </li>
+            <li class="menu__item"><a class="menu__link" href="#contact"
+                  aria-label="Link to the contact section">Kontakt</a></li>
          </ul>
       </nav>
 
@@ -39,9 +42,11 @@
             <i class="intro__social__item fas fa-phone"></i>
             <p class="intro__social__tooltip">123-456-789</p>
             <i class="intro__social__item fab fa-instagram"></i>
+            <a class="intro__social__link" href="#top"> <i class="intro__social__item fas fa-arrow-up"></i></a>
+
          </div>
-         <button class="intro__button"> <a class="intro__button__link" href="#catalog"><i
-                  class="fas fa-angle-double-down"></i></a> </i></button>
+         <button class="intro__button" aria-label="Navigate to the catalog section"> <a class="intro__button__link"
+               href="#catalog"><i class="fas fa-angle-double-down"></i></a></button>
       </main>
 
       <section id="catalog" class="catalog">
@@ -67,14 +72,39 @@
 
       </section>
 
-      <section class="about"></section>
+      <section id="about" class="about">
+         <div class="about__logo"></div>
+         <div class="about__content">
+            <h2 class="about__content__header">O nas</h2>
+            <p class="about__content__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid sint, quasi
+               at quidem, iure non dignissimos debitis laborum cum, omnis corrupti deleniti. Aperiam voluptatibus vel
+               similique itaque earum velit aut tempore recusandae! Ipsum reiciendis recusandae consequuntur repellat
+               cumque ex esse.</p>
+            <p class="about__content__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid sint, quasi
+               at quidem, iure non dignissimos debitis laborum cum, omnis corrupti deleniti. Aperiam voluptatibus vel
+               similique itaque earum velit aut tempore recusandae! Ipsum reiciendis recusandae consequuntur repellat
+               cumque ex esse.</p>
+         </div>
+      </section>
 
-      <section class="contact">
-         <form action=""></form>
+      <section id="contact" class="contact">
+         <div class="contact__map">
+            <iframe width='100%' height="600"
+               src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Turek%2C%20Poland&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"></iframe>
+         </div>
+         <div class="contact__info">
+            <address class="contact__info__address">
+               Nazwa ulicy <br>
+               Kod pocztowy <br>
+               Telefon: 123-456-789
+            </address>
+         </div>
+
       </section>
 
       <footer>
-         <p>All rights reserved <span>mjesiolowski</span></p>
+         <p>Copyright ©<a href="https://github.com/mjesiolowski"> mjesiolowski<span></span></a></p>
+
       </footer>
    </div>
 

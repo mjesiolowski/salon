@@ -4,7 +4,7 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   font-family: 'Open Sans', sans-serif;
+   font-family: 'Open Sans', Arial, sans-serif;
 }
 
 html {
@@ -16,6 +16,7 @@ html {
    display: flex;
    flex-wrap: wrap;
    background: url('/images/bg.jpg') no-repeat left fixed;
+   overflow: hidden;
 }
 
 // MENU
@@ -55,6 +56,10 @@ html {
          transition: .2s;
 
          &:hover {
+            @include hover
+         }
+
+         &__active {
             @include hover
          }
       }
@@ -138,7 +143,13 @@ main {
                @include hover
             }
 
+            &:last-child {
+               position: fixed;
+               bottom: 1%;
+               right: 1%;
+            }
          }
+
 
          &__tooltip {
             position: absolute;
@@ -160,7 +171,7 @@ main {
 }
 
 
-// CATALOG
+//CATALOG
 
 .catalog {
    display: flex;
@@ -171,6 +182,7 @@ main {
    min-height: 50vh;
    background-color: $transparentBlack;
    padding: 10rem 2rem;
+   box-shadow: 0 5px 5px $transparentBlack;
 
    &__section {
       // flex-grow: 1;
@@ -181,6 +193,7 @@ main {
       height: 60rem;
       margin: 2rem 0 0 0;
       border: 2px solid $white;
+      box-shadow: 0 5px 5px $transparentBlack;
       // transition: left 2s ease-out;
 
       &__header {
@@ -215,10 +228,10 @@ main {
          background: url('/images/thumb (3).jpg') no-repeat;
          background-position: 45% 2%;
          background-size: 200%;
-         transition: background-size .5s, left 1s;
+         transition: background-size .5s, left 1s ease-out;
 
          &:hover {
-            background-size: 220%;
+            background-size: 210%;
          }
       }
 
@@ -226,10 +239,10 @@ main {
          background: url('/images/thumb (4).jpg') no-repeat;
          background-position: 70% 0%;
          background-size: 100%;
-         transition: background-size .5s, left 1.2s;
+         transition: background-size .5s, left 1.2s ease-out;
 
          &:hover {
-            background-size: 110%;
+            background-size: 105%;
          }
       }
 
@@ -237,10 +250,10 @@ main {
          background: url('/images/thumb (2).jpg') no-repeat;
          background-position: 70% 0%;
          background-size: 100%;
-         transition: background-size .5s, left 1.4s;
+         transition: background-size .5s, left 1.4s ease-out;
 
          &:hover {
-            background-size: 110%;
+            background-size: 105%;
          }
 
       }
@@ -249,18 +262,90 @@ main {
          background: url('/images/thumb (6).jpg') no-repeat;
          background-position: 90% 0%;
          background-size: 120%;
-         transition: background-size .5s, left 1.6s;
+         transition: background-size .5s, left 1.6s ease-out;
 
          &:hover {
-            background-size: 130%;
+            background-size: 125%;
          }
       }
    }
 }
 
 
-// ABOUT
+//ABOUT
 
 .about {
-   height: 100vh;
+   position: relative;
+   // top: 0;
+   // left: 0;
+   // min-height: 100vh;
+   width: 100vw;
+   background: url('/images/bg2_s.jpg') fixed center;
+   padding-bottom: 8rem;
+
+   &__logo {
+      position: relative;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 50rem;
+      width: 50rem;
+      // background-color: $transparentBlack;
+      background: url('/images/logo.png') center no-repeat;
+      background-size: contain;
+   }
+
+   &__content {
+      @include basicBoxStyle();
+      width: 66%;
+      border: 2px solid $white;
+      text-align: center;
+      margin: 2rem auto;
+      padding: 2rem 4rem;
+
+      &__header {
+         font-size: 6rem;
+         color: $gold;
+      }
+
+      &__text {
+         font-size: 2rem;
+         padding: 1rem;
+      }
+   }
+}
+
+//CONTACT
+
+.contact {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+   align-items: center;
+   // min-height: 100vh;
+   padding: 6rem;
+   width: 100vw;
+   background-color: $transparentBlack;
+
+   &__map {
+      flex-basis: 50rem;
+      // position: relative;
+      // top: 5%;
+      // left: 5%;
+   }
+
+   &__info {
+      @include basicBoxStyle();
+      flex-basis: 50rem;
+      border: 2px solid $white;
+      padding: 2rem;
+      font-size: 3rem;
+      text-align: center;
+   }
+}
+
+//FOOTER
+
+footer {
+   min-height: 10vh;
 }

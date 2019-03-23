@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', Arial, sans-serif; }
 
 html {
   font-size: 62.5%;
@@ -11,7 +11,8 @@ html {
 .container {
   display: flex;
   flex-wrap: wrap;
-  background: url("/images/bg.jpg") no-repeat left fixed; }
+  background: url("/images/bg.jpg") no-repeat left fixed;
+  overflow: hidden; }
 
 .menu {
   display: flex;
@@ -50,6 +51,10 @@ html {
       cursor: pointer;
       transition: .2s; }
       .menu__list .menu__link:hover {
+        background-color: rgba(20, 20, 20, 0.8);
+        color: #C7900C;
+        border: 1px solid #C7900C; }
+      .menu__list .menu__link__active {
         background-color: rgba(20, 20, 20, 0.8);
         color: #C7900C;
         border: 1px solid #C7900C; }
@@ -114,6 +119,10 @@ main {
           background-color: rgba(20, 20, 20, 0.8);
           color: #C7900C;
           border: 1px solid #C7900C; }
+        main .intro__social__item:last-child {
+          position: fixed;
+          bottom: 1%;
+          right: 1%; }
       main .intro__social__tooltip {
         position: absolute;
         top: 30%;
@@ -137,7 +146,8 @@ main {
   align-items: center;
   min-height: 50vh;
   background-color: rgba(20, 20, 20, 0.8);
-  padding: 10rem 2rem; }
+  padding: 10rem 2rem;
+  box-shadow: 0 5px 5px rgba(20, 20, 20, 0.8); }
   .catalog__section {
     position: relative;
     top: 0;
@@ -145,7 +155,8 @@ main {
     width: 42rem;
     height: 60rem;
     margin: 2rem 0 0 0;
-    border: 2px solid #efe8e8; }
+    border: 2px solid #efe8e8;
+    box-shadow: 0 5px 5px rgba(20, 20, 20, 0.8); }
     .catalog__section__header {
       position: absolute;
       top: 2%;
@@ -185,30 +196,80 @@ main {
       background: url("/images/thumb (3).jpg") no-repeat;
       background-position: 45% 2%;
       background-size: 200%;
-      transition: background-size .5s, left 1s; }
+      transition: background-size .5s, left 1s ease-out; }
       .catalog__section__A:hover {
-        background-size: 220%; }
+        background-size: 210%; }
     .catalog__section__B {
       background: url("/images/thumb (4).jpg") no-repeat;
       background-position: 70% 0%;
       background-size: 100%;
-      transition: background-size .5s, left 1.2s; }
+      transition: background-size .5s, left 1.2s ease-out; }
       .catalog__section__B:hover {
-        background-size: 110%; }
+        background-size: 105%; }
     .catalog__section__C {
       background: url("/images/thumb (2).jpg") no-repeat;
       background-position: 70% 0%;
       background-size: 100%;
-      transition: background-size .5s, left 1.4s; }
+      transition: background-size .5s, left 1.4s ease-out; }
       .catalog__section__C:hover {
-        background-size: 110%; }
+        background-size: 105%; }
     .catalog__section__D {
       background: url("/images/thumb (6).jpg") no-repeat;
       background-position: 90% 0%;
       background-size: 120%;
-      transition: background-size .5s, left 1.6s; }
+      transition: background-size .5s, left 1.6s ease-out; }
       .catalog__section__D:hover {
-        background-size: 130%; }
+        background-size: 125%; }
 
 .about {
-  height: 100vh; }
+  position: relative;
+  width: 100vw;
+  background: url("/images/bg2_s.jpg") fixed center;
+  padding-bottom: 8rem; }
+  .about__logo {
+    position: relative;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50rem;
+    width: 50rem;
+    background: url("/images/logo.png") center no-repeat;
+    background-size: contain; }
+  .about__content {
+    box-shadow: 0 5px 5px rgba(20, 20, 20, 0.8);
+    background-color: rgba(20, 20, 20, 0.8);
+    color: #efe8e8;
+    width: 66%;
+    border: 2px solid #efe8e8;
+    text-align: center;
+    margin: 2rem auto;
+    padding: 2rem 4rem; }
+    .about__content__header {
+      font-size: 6rem;
+      color: #C7900C; }
+    .about__content__text {
+      font-size: 2rem;
+      padding: 1rem; }
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 6rem;
+  width: 100vw;
+  background-color: rgba(20, 20, 20, 0.8); }
+  .contact__map {
+    flex-basis: 50rem; }
+  .contact__info {
+    box-shadow: 0 5px 5px rgba(20, 20, 20, 0.8);
+    background-color: rgba(20, 20, 20, 0.8);
+    color: #efe8e8;
+    flex-basis: 50rem;
+    border: 2px solid #efe8e8;
+    padding: 2rem;
+    font-size: 3rem;
+    text-align: center; }
+
+footer {
+  min-height: 10vh; }

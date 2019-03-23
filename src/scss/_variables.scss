@@ -7,3 +7,20 @@ $gold: #C7900C;
    color: $gold;
    border: 1px solid $gold;
 }
+
+@mixin basicBoxStyle() {
+   box-shadow: 0 5px 5px $transparentBlack;
+   background-color: $transparentBlack;
+   color: $white;
+}
+
+@mixin button() {
+   border: 1px solid $white;
+   border-radius: 5%;
+   color: $white;
+   text-decoration: none;
+   text-transform: uppercase;
+   text-align: center;
+   letter-spacing: .3rem;
+   cursor: pointer;
+}

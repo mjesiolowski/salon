@@ -9,6 +9,7 @@
 
 html {
    font-size: 62.5%;
+   scroll-behavior: smooth;
 }
 
 .container {
@@ -25,11 +26,10 @@ html {
    flex-wrap: wrap;
    z-index: 1;
    width: 100%;
-   min-height: 9rem;
-   background-color: $transparentBlack;
-   box-shadow: 0 5px 5px $transparentBlack;
+   // min-height: 9rem;
+   @include basicBoxStyle();
    font-size: 2.5rem;
-
+   transition: .3s;
 
 
    &__list {
@@ -51,12 +51,7 @@ html {
          height: 100%;
          padding: 1rem 0;
          border: 1px solid $white;
-         border-radius: 5%;
-         color: $white;
-         text-decoration: none;
-         text-transform: uppercase;
-         text-align: center;
-         letter-spacing: .3rem;
+         @include button();
          transition: .2s;
 
          &:hover {
@@ -73,15 +68,13 @@ main {
    height: 100vh;
 
    .intro {
-      position: absolute;
+      position: relative;
       top: 55%;
       left: 50%;
       transform: translate(-50%, -50%);
-      min-width: 32vw;
+      width: 50rem;
       padding: 1rem;
-      box-shadow: 0 5px 5px $transparentBlack;
-      background-color: $transparentBlack;
-      color: $white;
+      @include basicBoxStyle();
       font-size: 3rem;
       text-align: center;
 
@@ -106,12 +99,15 @@ main {
          bottom: 0;
          left: 50%;
          transform: translate(-50%, -50%);
-         padding: 5rem;
          border: none;
          background-color: transparent;
          color: $transparentBlack;
          font-size: 10rem;
-         animation: arrows 2s infinite linear;
+         // animation: arrows 2s infinite linear;
+
+         &__link {
+            color: $transparentBlack;
+         }
 
          @keyframes arrows {
             to {
@@ -121,9 +117,10 @@ main {
       }
 
       &__social {
+         position: fixed;
+         z-index: 1;
          display: flex;
          flex-direction: column;
-         position: absolute;
          top: 13%;
          right: 1%;
 
@@ -132,8 +129,7 @@ main {
             padding: 1rem;
             margin-top: 3rem;
             border: 1px solid $white;
-            background-color: $transparentBlack;
-            color: $white;
+            @include basicBoxStyle();
             font-size: 3rem;
             transition: .2s;
             cursor: pointer;
@@ -150,8 +146,7 @@ main {
             left: -400%;
             padding: 1rem;
             border: 1px solid $white;
-            background-color: $transparentBlack;
-            color: $white;
+            @include basicBoxStyle();
             font-size: 3rem;
             opacity: 0;
             transition: .2s;
@@ -171,16 +166,101 @@ main {
    display: flex;
    flex-wrap: wrap;
    flex-basis: 100vw;
-   justify-content: space-around;
+   justify-content: space-evenly;
    align-items: center;
    min-height: 50vh;
-   background-color: transparent;
+   background-color: $transparentBlack;
+   padding: 10rem 2rem;
 
    &__section {
       // flex-grow: 1;
-      width: 35rem;
+      position: relative;
+      top: 0;
+      left: -110%;
+      width: 42rem;
       height: 60rem;
-      margin: 2rem 2rem 0 0;
+      margin: 2rem 0 0 0;
       border: 2px solid $white;
+      // transition: left 2s ease-out;
+
+      &__header {
+         position: absolute;
+         top: 2%;
+         left: 50%;
+         transform: translate(-50%);
+         @include basicBoxStyle();
+         color: $gold;
+         font-size: 3.5rem;
+         padding: 1.5rem 2rem;
+         width: 73%;
+         text-align: center;
+      }
+
+      &__button {
+         position: absolute;
+         bottom: 10%;
+         left: 50%;
+         transform: translate(-50%);
+         padding: 1.5rem 2.5rem;
+         @include basicBoxStyle();
+         @include button();
+         transition: .2s;
+
+         &:hover {
+            @include hover
+         }
+      }
+
+      &__A {
+         background: url('/images/thumb (3).jpg') no-repeat;
+         background-position: 45% 2%;
+         background-size: 200%;
+         transition: background-size .5s, left 1s;
+
+         &:hover {
+            background-size: 220%;
+         }
+      }
+
+      &__B {
+         background: url('/images/thumb (4).jpg') no-repeat;
+         background-position: 70% 0%;
+         background-size: 100%;
+         transition: background-size .5s, left 1.2s;
+
+         &:hover {
+            background-size: 110%;
+         }
+      }
+
+      &__C {
+         background: url('/images/thumb (2).jpg') no-repeat;
+         background-position: 70% 0%;
+         background-size: 100%;
+         transition: background-size .5s, left 1.4s;
+
+         &:hover {
+            background-size: 110%;
+         }
+
+      }
+
+      &__D {
+         background: url('/images/thumb (6).jpg') no-repeat;
+         background-position: 90% 0%;
+         background-size: 120%;
+         transition: background-size .5s, left 1.6s;
+
+         &:hover {
+            background-size: 130%;
+         }
+      }
    }
+}
+
+
+// ABOUT
+
+.about {
+   height: 100vh;
 }

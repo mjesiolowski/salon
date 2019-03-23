@@ -18,7 +18,7 @@
       <nav class="menu">
          <ul class="menu__list">
             <div class="menu__logo">Nazwa<br><span>Salon sukien ślubnych</span></div>
-            <li class="menu__item"><a class="menu__link" href="">Suknie</a></li>
+            <li class="menu__item"><a class="menu__link" href="#catalog">Suknie</a></li>
             <li class="menu__item"><a class="menu__link" href="">O nas</a></li>
             <li class="menu__item"><a class="menu__link" href="">Kontakt</a></li>
          </ul>
@@ -40,14 +40,31 @@
             <p class="intro__social__tooltip">123-456-789</p>
             <i class="intro__social__item fab fa-instagram"></i>
          </div>
-         <button class="intro__button"><i class="fas fa-angle-double-down"></i></button>
+         <button class="intro__button"> <a class="intro__button__link" href="#catalog"><i
+                  class="fas fa-angle-double-down"></i></a> </i></button>
       </main>
 
-      <section class="catalog">
-         <div class="catalog__section"><button class="catalog__button">1</button></div>
-         <div class="catalog__section"><button class="catalog__button">2</button></div>
-         <div class="catalog__section"><button class="catalog__button">3</button></div>
-         <div class="catalog__section"><button class="catalog__button">4</button></div>
+      <section id="catalog" class="catalog">
+         <div class="catalog__section catalog__section__A">
+            <h2 class="catalog__section__header">Nazwa kolekcji</h2>
+            <button class="catalog__section__button">Zobacz</button>
+         </div>
+
+         <div class="catalog__section catalog__section__B">
+            <h2 class="catalog__section__header">Nazwa kolekcji</h2>
+            <button class="catalog__section__button">Zobacz</button>
+         </div>
+
+         <div class="catalog__section catalog__section__C">
+            <h2 class="catalog__section__header">Nazwa kolekcji</h2>
+            <button class="catalog__section__button">Zobacz</button>
+         </div>
+
+         <div class="catalog__section catalog__section__D">
+            <h2 class="catalog__section__header">Nazwa kolekcji</h2>
+            <button class="catalog__section__button">Zobacz</button>
+         </div>
+
       </section>
 
       <section class="about"></section>
@@ -62,7 +79,7 @@
    </div>
 
 
-
+   <script src="js/main.js"></script>
 </body>
 
 </html>

@@ -15,23 +15,29 @@ html {
 .container {
    display: flex;
    flex-wrap: wrap;
-   background: url('/images/bg.jpg') no-repeat left fixed;
+   background: url('../images/bg.jpg') no-repeat left fixed;
    overflow: hidden;
 }
 
 // MENU
 
 .menu {
-   display: flex;
    position: fixed;
-   flex-wrap: wrap;
    z-index: 1;
+   display: flex;
+   flex-wrap: wrap;
    width: 100%;
-   // min-height: 9rem;
    @include basicBoxStyle();
-   font-size: 2.5rem;
+   font-size: 2rem;
    transition: .3s;
 
+   &__hidden {
+      display: none;
+   }
+
+   &__burger {
+      display: none;
+   }
 
    &__list {
       display: flex;
@@ -41,15 +47,14 @@ html {
       list-style: none;
 
       .menu__logo {
-         flex-basis: 50vw;
+         flex-basis: 30vw;
          padding: 2rem;
          color: $gold;
       }
 
       .menu__link {
          display: block;
-         min-width: 13vw;
-         height: 100%;
+         min-width: 10vw;
          padding: 1rem 0;
          border: 1px solid $white;
          @include button();
@@ -59,7 +64,7 @@ html {
             @include hover
          }
 
-         &__active {
+         &--active {
             @include hover
          }
       }
@@ -99,7 +104,7 @@ main {
          font-size: 2rem;
       }
 
-      &__button {
+      &__link {
          position: absolute;
          bottom: 0;
          left: 50%;
@@ -109,10 +114,6 @@ main {
          color: $transparentBlack;
          font-size: 10rem;
          // animation: arrows 2s infinite linear;
-
-         &__link {
-            color: $transparentBlack;
-         }
 
          @keyframes arrows {
             to {
@@ -171,41 +172,45 @@ main {
 }
 
 
-//CATALOG
+//CATALOG & SERVICES
 
-.catalog {
+
+.catalog,
+.services {
    display: flex;
    flex-wrap: wrap;
    flex-basis: 100vw;
-   justify-content: space-evenly;
+   justify-content: space-around;
    align-items: center;
-   min-height: 50vh;
-   background-color: $transparentBlack;
+   // min-height: 50vh;
    padding: 10rem 2rem;
-   box-shadow: 0 5px 5px $transparentBlack;
+   // box-shadow: 0 5px 5px $transparentBlack;
+   background-color: $transparentBlack;
+
+   .services__section {
+      left: 0;
+   }
 
    &__section {
-      // flex-grow: 1;
       position: relative;
       top: 0;
-      left: -110%;
-      width: 42rem;
+      left: -110vw;
+      width: 44rem;
       height: 60rem;
-      margin: 2rem 0 0 0;
+      margin: 2rem;
       border: 2px solid $white;
       box-shadow: 0 5px 5px $transparentBlack;
-      // transition: left 2s ease-out;
 
       &__header {
          position: absolute;
          top: 2%;
          left: 50%;
          transform: translate(-50%);
+         width: 73%;
+         padding: 1.5rem 2rem;
          @include basicBoxStyle();
          color: $gold;
-         font-size: 3.5rem;
-         padding: 1.5rem 2rem;
-         width: 73%;
+         font-size: 2.7rem;
          text-align: center;
       }
 
@@ -224,8 +229,9 @@ main {
          }
       }
 
+
       &__A {
-         background: url('/images/thumb (3).jpg') no-repeat;
+         background: url('../images/thumb (3).jpg') no-repeat;
          background-position: 45% 2%;
          background-size: 200%;
          transition: background-size .5s, left 1s ease-out;
@@ -236,7 +242,7 @@ main {
       }
 
       &__B {
-         background: url('/images/thumb (4).jpg') no-repeat;
+         background: url('../images/thumb (4).jpg') no-repeat;
          background-position: 70% 0%;
          background-size: 100%;
          transition: background-size .5s, left 1.2s ease-out;
@@ -247,7 +253,7 @@ main {
       }
 
       &__C {
-         background: url('/images/thumb (2).jpg') no-repeat;
+         background: url('../images/thumb (2).jpg') no-repeat;
          background-position: 70% 0%;
          background-size: 100%;
          transition: background-size .5s, left 1.4s ease-out;
@@ -259,7 +265,7 @@ main {
       }
 
       &__D {
-         background: url('/images/thumb (6).jpg') no-repeat;
+         background: url('../images/thumb (6).jpg') no-repeat;
          background-position: 90% 0%;
          background-size: 120%;
          transition: background-size .5s, left 1.6s ease-out;
@@ -271,16 +277,37 @@ main {
    }
 }
 
+//SERVICES
+
+// .services {
+//    display: flex;
+//    flex-wrap: wrap;
+//    flex-basis: 100vw;
+//    justify-content: space-around;
+//    align-items: center;
+//    // min-height: 50vh;
+//    padding: 10rem 2rem;
+//    box-shadow: 0 5px 5px $transparentBlack;
+//    background-color: $transparentBlack;
+
+//    &__section {
+//       position: relative;
+//       top: 0;
+//       left: 0;
+//       width: 44rem;
+//       height: 60rem;
+//       margin: 2rem;
+//       border: 2px solid $white;
+//       box-shadow: 0 5px 5px $transparentBlack;
+//    }
+// }
 
 //ABOUT
 
 .about {
    position: relative;
-   // top: 0;
-   // left: 0;
-   // min-height: 100vh;
    width: 100vw;
-   background: url('/images/bg2_s.jpg') fixed center;
+   background: url('../images/bg2_s.jpg') fixed center;
    padding-bottom: 8rem;
 
    &__logo {
@@ -290,18 +317,17 @@ main {
       transform: translateX(-50%);
       height: 50rem;
       width: 50rem;
-      // background-color: $transparentBlack;
-      background: url('/images/logo.png') center no-repeat;
+      background: url('../images/logo.png') center no-repeat;
       background-size: contain;
    }
 
    &__content {
       @include basicBoxStyle();
       width: 66%;
+      padding: 2rem 4rem;
+      margin: 2rem auto;
       border: 2px solid $white;
       text-align: center;
-      margin: 2rem auto;
-      padding: 2rem 4rem;
 
       &__header {
          font-size: 6rem;
@@ -309,8 +335,8 @@ main {
       }
 
       &__text {
-         font-size: 2rem;
          padding: 1rem;
+         font-size: 2rem;
       }
    }
 }
@@ -322,23 +348,19 @@ main {
    flex-wrap: wrap;
    justify-content: space-evenly;
    align-items: center;
-   // min-height: 100vh;
-   padding: 6rem;
    width: 100vw;
+   padding: 6rem;
    background-color: $transparentBlack;
 
    &__map {
       flex-basis: 50rem;
-      // position: relative;
-      // top: 5%;
-      // left: 5%;
    }
 
    &__info {
       @include basicBoxStyle();
       flex-basis: 50rem;
-      border: 2px solid $white;
       padding: 2rem;
+      border: 2px solid $white;
       font-size: 3rem;
       text-align: center;
    }
@@ -346,6 +368,139 @@ main {
 
 //FOOTER
 
-footer {
-   min-height: 10vh;
+.footer {
+   min-height: 3vh;
+   width: 100vw;
+   background-color: black;
+   color: $white;
+   line-height: 3vh;
+   text-align: center;
+   letter-spacing: .1rem;
+
+   &__link {
+      color: $white;
+      text-decoration: none;
+   }
+}
+
+
+@media (max-width: 1000px) {
+
+   .menu__hidden {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: -100vw;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(20, 20, 20, .95);
+      transition: .5s;
+
+      &--active {
+         right: 0;
+      }
+
+      &__list {
+         position: relative;
+         left: 0;
+         top: 12%;
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         align-items: center;
+         justify-content: center;
+         list-style: none;
+
+         .menu__hidden__item {
+            flex-basis: 85vw;
+            padding-top: 3rem;
+         }
+
+         .menu__hidden__link {
+            display: block;
+            padding: 1.5rem 0;
+            border: 1px solid $white;
+            @include button();
+            font-size: 2.5rem;
+            transition: .2s;
+
+            &:hover {
+               @include hover
+            }
+         }
+      }
+   }
+
+   .menu__burger {
+      display: block;
+      position: fixed;
+      z-index: 2;
+      top: 2%;
+      // transform: translateY(10%);
+      right: 3%;
+      padding: .5rem 1.5rem;
+      border: 1px solid $white;
+      @include basicBoxStyle();
+      box-shadow: none;
+      font-size: 4rem;
+      transition: .5s;
+      cursor: pointer;
+
+      &:hover {
+         @include hover();
+      }
+
+      &--active {
+         transform: rotate(180deg);
+      }
+   }
+
+   .menu__list {
+      display: none;
+      // justify-content: flex-start;
+   }
+
+   main {
+      .intro {
+         width: 95%;
+
+         &__header {
+            font-size: 4rem;
+         }
+
+         &__social,
+         &__link {
+            display: none;
+         }
+      }
+   }
+
+   .catalog__section,
+   .services__section {
+      width: 100%;
+      margin: 2rem 0;
+      background-size: auto;
+      background-position: center;
+
+      &:hover {
+         background-size: auto;
+      }
+   }
+
+   .about__logo {
+      top: 1%;
+   }
+
+   .about__logo,
+   .about__content {
+      width: 95%;
+
+      &__header {
+         font-size: 4rem;
+      }
+   }
+
+   .contact {
+      padding: 1rem
+   }
 }

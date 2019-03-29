@@ -17,6 +17,10 @@ html {
    flex-wrap: wrap;
    background: url('../images/bg.jpg') no-repeat left fixed;
    overflow: hidden;
+
+   &--subpage {
+      background: url('../images/bg2.jpg') no-repeat center fixed;
+   }
 }
 
 // MENU
@@ -31,12 +35,47 @@ html {
    font-size: 2rem;
    transition: .3s;
 
+   &--subpage {
+      background-color: $barelyTransparentBlack;
+   }
+
    &__hidden {
       display: none;
    }
 
    &__burger {
       display: none;
+   }
+
+   &__dropdown__list {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 21%);
+      min-width: 18vw;
+      border: 1px solid $white;
+      background-color: $transparentBlack;
+      list-style: none;
+      transition: .2s;
+      opacity: 0;
+
+      &--active {
+         opacity: 1;
+      }
+   }
+
+   &__dropdown__link {
+      display: block;
+      padding: 1rem 0;
+      // border: 1px solid $white;
+      @include button();
+      border-radius: 0;
+      background-color: $barelyTransparentBlack;
+      transition: .2s;
+
+      &:hover {
+         @include hover
+      }
    }
 
    &__list {
@@ -52,11 +91,15 @@ html {
          color: $gold;
       }
 
+      .menu__item {
+         position: relative;
+      }
+
       .menu__link {
          display: block;
-         min-width: 10vw;
+         min-width: 12vw;
          padding: 1rem 0;
-         border: 1px solid $white;
+         // border: 1px solid $white;
          @include button();
          transition: .2s;
 
@@ -66,6 +109,13 @@ html {
 
          &--active {
             @include hover
+         }
+
+         &__dropdown {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 7%;
          }
       }
    }
@@ -106,12 +156,12 @@ main {
 
       &__link {
          position: absolute;
-         bottom: 0;
+         top: 85%;
          left: 50%;
-         transform: translate(-50%, -50%);
+         transform: translate(-50%, 50%);
          border: none;
          background-color: transparent;
-         color: $transparentBlack;
+         color: $barelyTransparentBlack;
          font-size: 10rem;
          // animation: arrows 2s infinite linear;
 
@@ -120,6 +170,13 @@ main {
                bottom: -5%;
             }
          }
+      }
+
+      &--subpage {
+         top: 45%;
+         width: 100rem;
+         min-height: 40rem;
+         background-color: $barelyTransparentBlack;
       }
 
       &__social {
@@ -189,6 +246,26 @@ main {
 
    .services__section {
       left: 0;
+
+      &__A {
+         background: url('../images/thumb7.jpg') no-repeat center;
+         background-size: 100%;
+         transition: background-size .5s, left 1s ease-out;
+
+         &:hover {
+            background-size: 105%;
+         }
+      }
+
+      &__B {
+         background: url('../images/thumb8.jpg') no-repeat center;
+         background-size: 100%;
+         transition: background-size .5s, left 1s ease-out;
+
+         &:hover {
+            background-size: 105%;
+         }
+      }
    }
 
    &__section {
@@ -201,9 +278,17 @@ main {
       border: 2px solid $white;
       box-shadow: 0 5px 5px $transparentBlack;
 
+      &--subpage {
+         left: 0;
+         width: 35rem;
+         height: 50rem;
+         background: url('../images/thumb1.jpg') no-repeat;
+         background-size: cover;
+      }
+
       &__header {
          position: absolute;
-         top: 2%;
+         top: 40%;
          left: 50%;
          transform: translate(-50%);
          width: 73%;
@@ -214,12 +299,13 @@ main {
          text-align: center;
       }
 
-      &__button {
+      &__link {
          position: absolute;
          bottom: 10%;
          left: 50%;
          transform: translate(-50%);
          padding: 1.5rem 2.5rem;
+         font-size: 2rem;
          @include basicBoxStyle();
          @include button();
          transition: .2s;
@@ -231,21 +317,19 @@ main {
 
 
       &__A {
-         background: url('../images/thumb (3).jpg') no-repeat;
-         background-position: 45% 2%;
-         background-size: 200%;
+         background: url('../images/thumb1.jpg') no-repeat center;
+         background-size: 100%;
          transition: background-size .5s, left 1s ease-out;
 
          &:hover {
-            background-size: 210%;
+            background-size: 105%;
          }
       }
 
       &__B {
-         background: url('../images/thumb (4).jpg') no-repeat;
-         background-position: 70% 0%;
+         background: url('../images/thumb2.jpg') no-repeat center;
          background-size: 100%;
-         transition: background-size .5s, left 1.2s ease-out;
+         transition: background-size .5s, left 1s ease-out;
 
          &:hover {
             background-size: 105%;
@@ -253,54 +337,46 @@ main {
       }
 
       &__C {
-         background: url('../images/thumb (2).jpg') no-repeat;
-         background-position: 70% 0%;
+         background: url('../images/thumb3.jpg') no-repeat center;
          background-size: 100%;
-         transition: background-size .5s, left 1.4s ease-out;
+         transition: background-size .5s, left 1s ease-out;
 
          &:hover {
             background-size: 105%;
          }
-
       }
 
       &__D {
-         background: url('../images/thumb (6).jpg') no-repeat;
-         background-position: 90% 0%;
-         background-size: 120%;
-         transition: background-size .5s, left 1.6s ease-out;
+         background: url('../images/thumb4.jpg') no-repeat center;
+         background-size: 100%;
+         transition: background-size .5s, left 1s ease-out;
 
          &:hover {
-            background-size: 125%;
+            background-size: 105%;
+         }
+      }
+
+      &__E {
+         background: url('../images/thumb5.jpg') no-repeat center;
+         background-size: 100%;
+         transition: background-size .5s, left 1s ease-out;
+
+         &:hover {
+            background-size: 105%;
+         }
+      }
+
+      &__F {
+         background: url('../images/thumb6.jpg') no-repeat center;
+         background-size: 100%;
+         transition: background-size .5s, left 1s ease-out;
+
+         &:hover {
+            background-size: 105%;
          }
       }
    }
 }
-
-//SERVICES
-
-// .services {
-//    display: flex;
-//    flex-wrap: wrap;
-//    flex-basis: 100vw;
-//    justify-content: space-around;
-//    align-items: center;
-//    // min-height: 50vh;
-//    padding: 10rem 2rem;
-//    box-shadow: 0 5px 5px $transparentBlack;
-//    background-color: $transparentBlack;
-
-//    &__section {
-//       position: relative;
-//       top: 0;
-//       left: 0;
-//       width: 44rem;
-//       height: 60rem;
-//       margin: 2rem;
-//       border: 2px solid $white;
-//       box-shadow: 0 5px 5px $transparentBlack;
-//    }
-// }
 
 //ABOUT
 
@@ -393,7 +469,7 @@ main {
       right: -100vw;
       width: 100vw;
       height: 100vh;
-      background-color: rgba(20, 20, 20, .95);
+      background-color: $barelyTransparentBlack;
       transition: .5s;
 
       &--active {
@@ -484,6 +560,22 @@ main {
 
       &:hover {
          background-size: auto;
+      }
+
+      &__header {
+         font-size: 2.3rem;
+      }
+
+      &--subpage {
+         left: 0;
+         width: 35rem;
+         height: 50rem;
+         background: url('../images/subpage.jpg') no-repeat;
+         background-size: cover;
+
+         &:hover {
+            background-size: cover;
+         }
       }
    }
 

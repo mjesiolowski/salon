@@ -9,20 +9,31 @@
    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext" rel="stylesheet">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-   <div id="top" class="container">
+   <div id="top" class="container container--subpage">
 
-      <nav class="menu">
+      <nav class="menu menu--subpage">
          <ul class="menu__list">
             <li class="menu__logo">Nazwa<br><span>Salon sukien ślubnych i wizytowych</span></li>
-            <li class="menu__item"><a class="menu__link" href="#top" aria-label="Home link"><i
+            <li class="menu__item"><a class="menu__link" href="../index.html#top" aria-label="Home link"><i
                      class="fas fa-home"></i></a></li>
-            <li class="menu__item"><a class="menu__link" href="#catalog"
-                  aria-label="Link to the catalog section">Suknie</a></li>
-            <li class="menu__item"><a class="menu__link" href="#services"
+            <li class="menu__item"><a class="menu__link">Suknie</a><i
+                  class="menu__link__dropdown fas fa-caret-down"></i>
+               <ul class="menu__dropdown__list">
+                  <li class="menu__dropdown__item"><a href="#" class="menu__dropdown__link">gotowe</a></li>
+                  <li class="menu__dropdown__item"><a href="#" class="menu__dropdown__link">ślubne szyte na
+                        miarę</a></li>
+                  <li class="menu__dropdown__item"><a href="#" class="menu__dropdown__link">XL</a></li>
+                  <li class="menu__dropdown__item"><a href="#" class="menu__dropdown__link">wizytowe</a></li>
+                  <li class="menu__dropdown__item"><a href="#" class="menu__dropdown__link">sukienki szyte na miarę</a>
+                  </li>
+                  <li class="menu__dropdown__item"><a href="#" class="menu__dropdown__link">dodatki</a></li>
+               </ul>
+            </li>
+            <li class="menu__item"><a class="menu__link" href="../index.html#services"
                   aria-label="Link to the services section">Usługi</a>
             </li>
             <li class="menu__item"><a class="menu__link" href="#about" aria-label="Link to the 'about' section">O
@@ -31,6 +42,7 @@
             <li class="menu__item"><a class="menu__link" href="#contact"
                   aria-label="Link to the contact section">Kontakt</a></li>
          </ul>
+
          <div class="menu__burger"><i class="fas fa-bars"></i></div>
          <div class="menu__hidden">
             <ul class="menu__hidden__list">
@@ -49,13 +61,13 @@
       </nav>
 
       <main>
-         <div class="intro">
-            <h1 class="intro__header">Strona w budowie</h1>
-            <p class="intro__text">Salon sukien ślubnych i wizytowych</p>
-            <address class="intro__address">
-               Nazwa ulicy <br>
-               Kod pocztowy
-            </address>
+         <div class="intro intro--subpage">
+            <h1 class="intro__header">Suknie ślubne gotowe</h1>
+            <p class="intro__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem quod similique
+               consectetur, ad quaerat expedita placeat incidunt velit officiis iste, tenetur nulla adipisci neque hic
+               animi laborum nihil! Inventore pariatur corrupti, consectetur sunt optio, ad veritatis eveniet velit
+               nostrum neque praesentium natus, debitis rerum iusto error perferendis exercitationem vitae odit.</p>
+            <a class="intro__link" href="#catalog"><i class="fas fa-angle-double-down"></i></a>
          </div>
 
          <div class="intro__social">
@@ -66,61 +78,46 @@
             <a class="intro__social__link" href="#top"> <i class="intro__social__item fas fa-arrow-up"></i></a>
 
          </div>
-         <a class="intro__link" href="#catalog"><i class="fas fa-angle-double-down"></i></a>
+
       </main>
 
-      <section id="catalog" class="catalog">
-         <div class="catalog__section catalog__section__A">
-            <h2 class="catalog__section__header">Suknie ślubne gotowe</h2>
-            <button class="catalog__section__button">Zobacz</button>
+      <section id="catalog" class="catalog catalog--subpage">
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
+         </div>
+         <div class="catalog__section catalog__section--subpage">
          </div>
 
-         <div class="catalog__section catalog__section__B">
-            <h2 class="catalog__section__header">Suknie ślubne szyte na miarę</h2>
-            <button class="catalog__section__button">Zobacz</button>
-         </div>
 
-         <div class="catalog__section catalog__section__C">
-            <h2 class="catalog__section__header">Suknie ślubne XL</h2>
-            <button class="catalog__section__button">Zobacz</button>
-         </div>
-
-         <div class="catalog__section catalog__section__D">
-            <h2 class="catalog__section__header">Suknie wizytowe</h2>
-            <button class="catalog__section__button">Zobacz</button>
-         </div>
-
-         <div class="catalog__section catalog__section__D">
-            <h2 class="catalog__section__header">Dodatki</h2>
-            <button class="catalog__section__button">Zobacz</button>
-         </div>
-      </section>
-
-      <section id="services" class="services">
-         <div class="services__section">
-            <h2 class="services__section__header">Komis sukien ślubnych</h2>
-            <button class="services__section__button">Zobacz</button>
-         </div>
-
-         <div class="services__section">
-            <h2 class="services__section__header">Czyszczenie sukien ślubnych i wizytowych</h2>
-            <button class="services__section__button">Zobacz</button>
-         </div>
-      </section>
-
-      <section id="about" class="about">
-         <div class="about__logo"></div>
-         <div class="about__content">
-            <h2 class="about__content__header">O nas</h2>
-            <p class="about__content__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid sint, quasi
-               at quidem, iure non dignissimos debitis laborum cum, omnis corrupti deleniti. Aperiam voluptatibus vel
-               similique itaque earum velit aut tempore recusandae! Ipsum reiciendis recusandae consequuntur repellat
-               cumque ex esse.</p>
-            <p class="about__content__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid sint, quasi
-               at quidem, iure non dignissimos debitis laborum cum, omnis corrupti deleniti. Aperiam voluptatibus vel
-               similique itaque earum velit aut tempore recusandae! Ipsum reiciendis recusandae consequuntur repellat
-               cumque ex esse.</p>
-         </div>
       </section>
 
       <section id="contact" class="contact">
@@ -146,7 +143,7 @@
    </div>
 
 
-   <script src="js/main.js"></script>
+   <script src="../suknie/js/subpage.js"></script>
 </body>
 
 </html>

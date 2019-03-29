@@ -13,6 +13,8 @@ html {
   flex-wrap: wrap;
   background: url("../images/bg.jpg") no-repeat left fixed;
   overflow: hidden; }
+  .container--subpage {
+    background: url("../images/bg2.jpg") no-repeat center fixed; }
 
 .menu {
   position: fixed;
@@ -25,10 +27,43 @@ html {
   color: #efe8e8;
   font-size: 2rem;
   transition: .3s; }
+  .menu--subpage {
+    background-color: rgba(20, 20, 20, 0.95); }
   .menu__hidden {
     display: none; }
   .menu__burger {
     display: none; }
+  .menu__dropdown__list {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 21%);
+    min-width: 18vw;
+    border: 1px solid #efe8e8;
+    background-color: rgba(20, 20, 20, 0.8);
+    list-style: none;
+    transition: .2s;
+    opacity: 0; }
+    .menu__dropdown__list--active {
+      opacity: 1; }
+  .menu__dropdown__link {
+    display: block;
+    padding: 1rem 0;
+    border: 1px solid #efe8e8;
+    border-radius: 5%;
+    color: #efe8e8;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: .3rem;
+    cursor: pointer;
+    border-radius: 0;
+    background-color: rgba(20, 20, 20, 0.95);
+    transition: .2s; }
+    .menu__dropdown__link:hover {
+      background-color: rgba(20, 20, 20, 0.8);
+      color: #C7900C;
+      border: 1px solid #C7900C; }
   .menu__list {
     display: flex;
     flex-grow: 1;
@@ -39,11 +74,12 @@ html {
       flex-basis: 30vw;
       padding: 2rem;
       color: #C7900C; }
+    .menu__list .menu__item {
+      position: relative; }
     .menu__list .menu__link {
       display: block;
-      min-width: 10vw;
+      min-width: 12vw;
       padding: 1rem 0;
-      border: 1px solid #efe8e8;
       border: 1px solid #efe8e8;
       border-radius: 5%;
       color: #efe8e8;
@@ -61,6 +97,11 @@ html {
         background-color: rgba(20, 20, 20, 0.8);
         color: #C7900C;
         border: 1px solid #C7900C; }
+      .menu__list .menu__link__dropdown {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 7%; }
 
 main {
   flex-basis: 100vw;
@@ -88,17 +129,22 @@ main {
       font-size: 2rem; }
     main .intro__link {
       position: absolute;
-      bottom: 0;
+      top: 85%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, 50%);
       border: none;
       background-color: transparent;
-      color: rgba(20, 20, 20, 0.8);
+      color: rgba(20, 20, 20, 0.95);
       font-size: 10rem; }
 
 @keyframes arrows {
   to {
     bottom: -5%; } }
+    main .intro--subpage {
+      top: 45%;
+      width: 100rem;
+      min-height: 40rem;
+      background-color: rgba(20, 20, 20, 0.95); }
     main .intro__social {
       position: fixed;
       z-index: 1;
@@ -151,6 +197,22 @@ main {
   .catalog .services__section,
   .services .services__section {
     left: 0; }
+    .catalog .services__section__A,
+    .services .services__section__A {
+      background: url("../images/thumb7.jpg") no-repeat center;
+      background-size: 100%;
+      transition: background-size .5s, left 1s ease-out; }
+      .catalog .services__section__A:hover,
+      .services .services__section__A:hover {
+        background-size: 105%; }
+    .catalog .services__section__B,
+    .services .services__section__B {
+      background: url("../images/thumb8.jpg") no-repeat center;
+      background-size: 100%;
+      transition: background-size .5s, left 1s ease-out; }
+      .catalog .services__section__B:hover,
+      .services .services__section__B:hover {
+        background-size: 105%; }
   .catalog__section,
   .services__section {
     position: relative;
@@ -161,10 +223,17 @@ main {
     margin: 2rem;
     border: 2px solid #efe8e8;
     box-shadow: 0 5px 5px rgba(20, 20, 20, 0.8); }
+    .catalog__section--subpage,
+    .services__section--subpage {
+      left: 0;
+      width: 35rem;
+      height: 50rem;
+      background: url("../images/thumb1.jpg") no-repeat;
+      background-size: cover; }
     .catalog__section__header,
     .services__section__header {
       position: absolute;
-      top: 2%;
+      top: 40%;
       left: 50%;
       transform: translate(-50%);
       width: 73%;
@@ -175,13 +244,14 @@ main {
       color: #C7900C;
       font-size: 2.7rem;
       text-align: center; }
-    .catalog__section__button,
-    .services__section__button {
+    .catalog__section__link,
+    .services__section__link {
       position: absolute;
       bottom: 10%;
       left: 50%;
       transform: translate(-50%);
       padding: 1.5rem 2.5rem;
+      font-size: 2rem;
       box-shadow: 0 5px 5px rgba(20, 20, 20, 0.8);
       background-color: rgba(20, 20, 20, 0.8);
       color: #efe8e8;
@@ -194,47 +264,59 @@ main {
       letter-spacing: .3rem;
       cursor: pointer;
       transition: .2s; }
-      .catalog__section__button:hover,
-      .services__section__button:hover {
+      .catalog__section__link:hover,
+      .services__section__link:hover {
         background-color: rgba(20, 20, 20, 0.8);
         color: #C7900C;
         border: 1px solid #C7900C; }
     .catalog__section__A,
     .services__section__A {
-      background: url("../images/thumb (3).jpg") no-repeat;
-      background-position: 45% 2%;
-      background-size: 200%;
+      background: url("../images/thumb1.jpg") no-repeat center;
+      background-size: 100%;
       transition: background-size .5s, left 1s ease-out; }
       .catalog__section__A:hover,
       .services__section__A:hover {
-        background-size: 210%; }
+        background-size: 105%; }
     .catalog__section__B,
     .services__section__B {
-      background: url("../images/thumb (4).jpg") no-repeat;
-      background-position: 70% 0%;
+      background: url("../images/thumb2.jpg") no-repeat center;
       background-size: 100%;
-      transition: background-size .5s, left 1.2s ease-out; }
+      transition: background-size .5s, left 1s ease-out; }
       .catalog__section__B:hover,
       .services__section__B:hover {
         background-size: 105%; }
     .catalog__section__C,
     .services__section__C {
-      background: url("../images/thumb (2).jpg") no-repeat;
-      background-position: 70% 0%;
+      background: url("../images/thumb3.jpg") no-repeat center;
       background-size: 100%;
-      transition: background-size .5s, left 1.4s ease-out; }
+      transition: background-size .5s, left 1s ease-out; }
       .catalog__section__C:hover,
       .services__section__C:hover {
         background-size: 105%; }
     .catalog__section__D,
     .services__section__D {
-      background: url("../images/thumb (6).jpg") no-repeat;
-      background-position: 90% 0%;
-      background-size: 120%;
-      transition: background-size .5s, left 1.6s ease-out; }
+      background: url("../images/thumb4.jpg") no-repeat center;
+      background-size: 100%;
+      transition: background-size .5s, left 1s ease-out; }
       .catalog__section__D:hover,
       .services__section__D:hover {
-        background-size: 125%; }
+        background-size: 105%; }
+    .catalog__section__E,
+    .services__section__E {
+      background: url("../images/thumb5.jpg") no-repeat center;
+      background-size: 100%;
+      transition: background-size .5s, left 1s ease-out; }
+      .catalog__section__E:hover,
+      .services__section__E:hover {
+        background-size: 105%; }
+    .catalog__section__F,
+    .services__section__F {
+      background: url("../images/thumb6.jpg") no-repeat center;
+      background-size: 100%;
+      transition: background-size .5s, left 1s ease-out; }
+      .catalog__section__F:hover,
+      .services__section__F:hover {
+        background-size: 105%; }
 
 .about {
   position: relative;
@@ -379,6 +461,19 @@ main {
     .catalog__section:hover,
     .services__section:hover {
       background-size: auto; }
+    .catalog__section__header,
+    .services__section__header {
+      font-size: 2.3rem; }
+    .catalog__section--subpage,
+    .services__section--subpage {
+      left: 0;
+      width: 35rem;
+      height: 50rem;
+      background: url("../images/subpage.jpg") no-repeat;
+      background-size: cover; }
+      .catalog__section--subpage:hover,
+      .services__section--subpage:hover {
+        background-size: cover; }
   .about__logo {
     top: 1%; }
   .about__logo,

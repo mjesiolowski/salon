@@ -30,9 +30,19 @@ gulp.task('distHTML', () =>
    .pipe(gulp.dest('dist/'))
 );
 
+gulp.task('distHTML--subpage', () =>
+   gulp.src('src/suknie/gotowe.html')
+   .pipe(gulp.dest('dist/suknie'))
+);
+
 gulp.task('distJS', () =>
    gulp.src('src/js/main.js')
    .pipe(gulp.dest('dist/js'))
+);
+
+gulp.task('distJS--subpage', () =>
+   gulp.src('src/suknie/js/subpage.js')
+   .pipe(gulp.dest('dist/suknie/js'))
 );
 
 gulp.task('autoprefixer', () =>
@@ -44,6 +54,7 @@ gulp.task('autoprefixer', () =>
    .pipe(gulp.dest('dist/css'))
 );
 
+
 gulp.task('nano', function () {
    return gulp.src('dist/css/style.css')
       .pipe(sourcemaps.init())
@@ -52,6 +63,6 @@ gulp.task('nano', function () {
       .pipe(gulp.dest('dist/css/'));
 });
 
-gulp.task("build", (gulp.series('distHTML', 'distJS', 'autoprefixer', 'nano')));
+gulp.task("build", (gulp.series('distHTML', 'distHTML--subpage', 'distJS--subpage', 'distJS', 'autoprefixer', 'nano')));
 
 gulp.task("default", (gulp.series("serve")));

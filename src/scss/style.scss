@@ -39,28 +39,82 @@ html {
       background-color: $barelyTransparentBlack;
    }
 
-   &__hidden {
-      display: none;
-   }
-
    &__burger {
       display: none;
+      position: fixed;
+      z-index: 2;
+      top: 1%;
+      // transform: translateY(10%);
+      right: 3%;
+      padding: .5rem 1.5rem;
+      border: 1px solid $white;
+      @include basicBoxStyle();
+      box-shadow: none;
+      font-size: 4rem;
+      transition: .5s;
+      cursor: pointer;
+   }
+
+   &__hidden {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: -100vw;
+      width: 100%;
+      min-height: 100vh;
+      background-color: $barelyTransparentBlack;
+      transition: .5s;
+
+      &--active {
+         right: 0;
+      }
+
+      &__list {
+         position: relative;
+         left: 0;
+         top: 8%;
+         height: 100vh;
+         display: flex;
+         flex-direction: column;
+         // flex-wrap: wrap;
+         align-items: center;
+         justify-content: space-evenly;
+         list-style: none;
+
+
+         .menu__hidden__item {
+            width: 90vw;
+         }
+
+         .menu__hidden__link {
+            display: block;
+            // height: 5vh;
+            // padding: 1.5rem 0;
+            @include button();
+            border: none;
+            font-size: 2.6rem;
+            transition: .2s;
+
+            // &:hover {
+            //    @include hover
+            // }
+         }
+      }
    }
 
    &__dropdown__list {
       position: absolute;
-      top: 0;
+      top: 100%;
       left: 50%;
-      transform: translate(-50%, 21%);
+      transform: translateX(-50%);
       min-width: 18vw;
-      border: 1px solid $white;
+      // border: 1px solid $white;
       background-color: $transparentBlack;
       list-style: none;
-      transition: .2s;
-      opacity: 0;
+      visibility: hidden;
 
       &--active {
-         opacity: 1;
+         visibility: visible;
       }
    }
 
@@ -69,12 +123,13 @@ html {
       padding: 1rem 0;
       // border: 1px solid $white;
       @include button();
+      border: none;
       border-radius: 0;
       background-color: $barelyTransparentBlack;
-      transition: .2s;
+      transition: background-color .2s, visibility 0s;
 
       &:hover {
-         @include hover
+         color: $gold;
       }
    }
 
@@ -268,6 +323,43 @@ main {
       }
    }
 
+   &__modal {
+      position: fixed;
+      z-index: 1;
+      visibility: hidden;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $barelyTransparentBlack;
+      // transition: .2s;
+
+      &__content {
+         position: relative;
+         top: 50%;
+         left: 50%;
+         width: 50rem;
+         height: 70rem;
+         transform: translate(-50%, -50%);
+         background-color: $white;
+
+      }
+
+      &__img {
+         width: 100%;
+         height: 100%;
+      }
+
+      &__closeBtn {
+         position: absolute;
+         top: -2%;
+         right: -3%;
+         font-size: 3rem;
+         color: $gold;
+         cursor: pointer;
+      }
+   }
+
    &__section {
       position: relative;
       top: 0;
@@ -282,8 +374,12 @@ main {
          left: 0;
          width: 35rem;
          height: 50rem;
-         background: url('../images/thumb1.jpg') no-repeat;
-         background-size: cover;
+         cursor: pointer;
+
+         &__img {
+            width: 100%;
+            height: 100%;
+         }
       }
 
       &__header {
@@ -464,63 +560,10 @@ main {
 
    .menu__hidden {
       display: block;
-      position: absolute;
-      top: 0;
-      right: -100vw;
-      width: 100vw;
-      height: 100vh;
-      background-color: $barelyTransparentBlack;
-      transition: .5s;
-
-      &--active {
-         right: 0;
-      }
-
-      &__list {
-         position: relative;
-         left: 0;
-         top: 12%;
-         display: flex;
-         flex-direction: row;
-         flex-wrap: wrap;
-         align-items: center;
-         justify-content: center;
-         list-style: none;
-
-         .menu__hidden__item {
-            flex-basis: 85vw;
-            padding-top: 3rem;
-         }
-
-         .menu__hidden__link {
-            display: block;
-            padding: 1.5rem 0;
-            border: 1px solid $white;
-            @include button();
-            font-size: 2.5rem;
-            transition: .2s;
-
-            &:hover {
-               @include hover
-            }
-         }
-      }
    }
 
    .menu__burger {
       display: block;
-      position: fixed;
-      z-index: 2;
-      top: 2%;
-      // transform: translateY(10%);
-      right: 3%;
-      padding: .5rem 1.5rem;
-      border: 1px solid $white;
-      @include basicBoxStyle();
-      box-shadow: none;
-      font-size: 4rem;
-      transition: .5s;
-      cursor: pointer;
 
       &:hover {
          @include hover();
@@ -570,7 +613,7 @@ main {
          left: 0;
          width: 35rem;
          height: 50rem;
-         background: url('../images/subpage.jpg') no-repeat;
+         background: url('../images/thumb1.jpg') no-repeat;
          background-size: cover;
 
          &:hover {

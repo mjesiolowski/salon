@@ -1,8 +1,10 @@
 const navbar = document.querySelector('.menu')
+
 const catolog = document.querySelector('.catalog')
-const section = document.querySelector('.section')
+const services = document.querySelector('.services')
 const about = document.querySelector('.about')
 const contact = document.querySelector('.contact')
+
 const navbarLinks = document.querySelectorAll('.menu__link')
 const catalogSection = document.querySelectorAll('.catalog__section')
 const hamburger = document.querySelector('.menu__burger')
@@ -16,10 +18,16 @@ window.addEventListener("scroll", function () {
       catalogSection.forEach(section => section.style.left = 0)
    } else navbar.style.fontSize = "2rem"
 
-   navbarLinks.forEach(navbarLink => navbarLink.classList.remove('menu__link--active'))
    if (window.scrollY < catalog.offsetTop) {
       navbarLinks[0].classList.add('menu__link--active')
    }
+
+   navbarLinks.forEach(navbarLink => navbarLink.classList.remove('menu__link--active'))
+
+   if (window.scrollY < catalog.offsetTop) {
+      navbarLinks[0].classList.add('menu__link--active')
+   }
+
    if (window.scrollY >= catalog.offsetTop && window.scrollY < services.offsetTop) {
       navbarLinks[1].classList.add('menu__link--active')
    }

@@ -13,7 +13,21 @@ html {
   flex-wrap: wrap;
   background: url("../images/bg.jpg") no-repeat left fixed;
   overflow: hidden; }
-  .container--subpage {
+  .container--subpage--gotowe {
+    background: url("../images/bg2.jpg") no-repeat center fixed; }
+  .container--subpage--slubne_na_miare {
+    background: url("../images/bg3.jpg") no-repeat center fixed; }
+  .container--subpage--xl {
+    background: url("../images/bg2_s.jpg") no-repeat center fixed; }
+  .container--subpage--wizytowe {
+    background: url("../images/bg3_s.jpg") no-repeat center fixed; }
+  .container--subpage--sukienki_na_miare {
+    background: url("../images/bg2.jpg") no-repeat center fixed; }
+  .container--subpage--dodatki {
+    background: url("../images/bg3.jpg") no-repeat center fixed; }
+  .container--subpage--komis {
+    background: url("../images/bg3_s.jpg") no-repeat center fixed; }
+  .container--subpage--czyszczenie {
     background: url("../images/bg2.jpg") no-repeat center fixed; }
 
 .menu {
@@ -149,7 +163,8 @@ html {
 
 .intro {
   flex-basis: 100vw;
-  height: 100vh; }
+  min-height: 100vh;
+  min-width: 32rem; }
   .intro__title {
     position: relative;
     top: 55%;
@@ -165,9 +180,13 @@ html {
     .intro__title__header {
       color: #C7900C;
       letter-spacing: .4rem; }
+      .intro__title__header--subpage {
+        font-size: 3.5rem; }
     .intro__title__text {
       padding: 1rem 0;
       font-size: 2.5rem; }
+      .intro__title__text--subpage {
+        font-size: 2rem; }
     .intro__title__address {
       padding: 1rem 0;
       font-size: 2rem; }
@@ -179,16 +198,14 @@ html {
       border: none;
       background-color: transparent;
       color: rgba(20, 20, 20, 0.95);
-      font-size: 10rem;
-      animation: arrows 1.5s infinite linear; }
+      font-size: 10rem; }
 
 @keyframes arrows {
   to {
     bottom: -70%; } }
     .intro__title--subpage {
       top: 45%;
-      width: 100rem;
-      min-height: 40rem;
+      width: 75%;
       background-color: rgba(20, 20, 20, 0.95); }
   .intro__social {
     position: fixed;
@@ -204,6 +221,7 @@ html {
       box-shadow: 0 5px 5px rgba(20, 20, 20, 0.8);
       background-color: rgba(20, 20, 20, 0.8);
       color: #efe8e8;
+      background-color: rgba(20, 20, 20, 0.95);
       font-size: 3rem;
       transition: .2s;
       cursor: pointer; }
@@ -305,7 +323,11 @@ html {
     height: 44rem;
     margin: 2rem 5rem;
     border: 2px solid #efe8e8;
-    box-shadow: 0 5px 5px rgba(20, 20, 20, 0.8); }
+    box-shadow: 0 5px 5px rgba(20, 20, 20, 0.8);
+    transition: transform .3s, left 1s; }
+    .catalog__section:hover,
+    .services__section:hover {
+      transform: scale(1.05); }
     .catalog__section--subpage,
     .services__section--subpage {
       left: 0;
@@ -357,69 +379,13 @@ html {
         background-color: rgba(20, 20, 20, 0.8);
         color: #C7900C;
         border: 1px solid #C7900C; }
-    .catalog__section__A,
-    .services__section__A {
-      background: url("../images/thumb1.jpg") no-repeat center;
-      background-size: 100%;
-      transition: background-size .5s, left 1s ease-out; }
-      .catalog__section__A:hover,
-      .services__section__A:hover {
-        background-size: 105%; }
-    .catalog__section__B,
-    .services__section__B {
-      background: url("../images/thumb2.jpg") no-repeat center;
-      background-size: 100%;
-      transition: background-size .5s, left 1s ease-out; }
-      .catalog__section__B:hover,
-      .services__section__B:hover {
-        background-size: 105%; }
-    .catalog__section__C,
-    .services__section__C {
-      background: url("../images/thumb3.jpg") no-repeat center;
-      background-size: 100%;
-      transition: background-size .5s, left 1s ease-out; }
-      .catalog__section__C:hover,
-      .services__section__C:hover {
-        background-size: 105%; }
-    .catalog__section__D,
-    .services__section__D {
-      background: url("../images/thumb4.jpg") no-repeat center;
-      background-size: 100%;
-      transition: background-size .5s, left 1s ease-out; }
-      .catalog__section__D:hover,
-      .services__section__D:hover {
-        background-size: 105%; }
-    .catalog__section__E,
-    .services__section__E {
-      background: url("../images/thumb5.jpg") no-repeat center;
-      background-size: 100%;
-      transition: background-size .5s, left 1s ease-out; }
-      .catalog__section__E:hover,
-      .services__section__E:hover {
-        background-size: 105%; }
-    .catalog__section__F,
-    .services__section__F {
-      background: url("../images/thumb6.jpg") no-repeat center;
-      background-size: 100%;
-      transition: background-size .5s, left 1s ease-out; }
-      .catalog__section__F:hover,
-      .services__section__F:hover {
-        background-size: 105%; }
+    .catalog__section__img,
+    .services__section__img {
+      width: 100%;
+      height: 100%; }
 
 .services__section {
   left: 0; }
-  .services__section__A {
-    background: url("../images/thumb7.jpg") no-repeat top;
-    background-size: 100%;
-    transition: background-size .5s, left 1s ease-out; }
-    .services__section__A:hover {
-      background-size: 103%; }
-  .services__section__B {
-    background: url("../images/thumb8.jpg") no-repeat top;
-    background-size: 100%;
-    transition: background-size .5s, left 1s ease-out; }
-    .services__section__B:hover {
-      background-size: 103%; }
 
 .about {
   position: relative;
@@ -504,8 +470,6 @@ html {
       font-size: 4rem; }
       .intro__title__header--subpage {
         font-size: 3rem; }
-    .intro__title__text--subpage {
-      font-size: 2rem; }
     .intro__title__link {
       display: none; }
   .intro__social {
@@ -517,7 +481,7 @@ html {
     margin: 2rem .5rem; }
     .catalog__section:hover,
     .services__section:hover {
-      background-size: auto; }
+      transform: scale(1); }
     .catalog__section__header,
     .services__section__header {
       font-size: 2.3rem; }
@@ -536,3 +500,15 @@ html {
   .catalog,
   .services {
     padding: 0; } }
+
+@media (max-height: 750px) {
+  .intro__title {
+    margin-bottom: 15%;
+    width: 95%; }
+    .intro__title--subpage {
+      top: 50%;
+      width: 85%; }
+    .intro__title__link {
+      display: none; }
+  .intro__social {
+    display: none; } }

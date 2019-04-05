@@ -19,7 +19,39 @@ html {
    overflow: hidden;
 
    &--subpage {
-      background: url('../images/bg2.jpg') no-repeat center fixed;
+      &--gotowe {
+         background: url('../images/bg2.jpg') no-repeat center fixed;
+      }
+
+      &--slubne_na_miare {
+         background: url('../images/bg3.jpg') no-repeat center fixed;
+      }
+
+      &--xl {
+         background: url('../images/bg2_s.jpg') no-repeat center fixed;
+      }
+
+      &--wizytowe {
+         background: url('../images/bg3_s.jpg') no-repeat center fixed;
+      }
+
+      &--sukienki_na_miare {
+         background: url('../images/bg2.jpg') no-repeat center fixed;
+      }
+
+      &--dodatki {
+         background: url('../images/bg3.jpg') no-repeat center fixed;
+      }
+
+      &--komis {
+         background: url('../images/bg3_s.jpg') no-repeat center fixed;
+      }
+
+      &--czyszczenie {
+         background: url('../images/bg2.jpg') no-repeat center fixed;
+      }
+
+
    }
 }
 
@@ -181,7 +213,8 @@ html {
 
 .intro {
    flex-basis: 100vw;
-   height: 100vh;
+   min-height: 100vh;
+   min-width: 32rem;
 
    &__title {
       position: relative;
@@ -197,12 +230,20 @@ html {
 
       &__header {
          color: $gold;
-         letter-spacing: .4rem
+         letter-spacing: .4rem;
+
+         &--subpage {
+            font-size: 3.5rem;
+         }
       }
 
       &__text {
          padding: 1rem 0;
          font-size: 2.5rem;
+
+         &--subpage {
+            font-size: 2rem;
+         }
       }
 
       &__address {
@@ -219,7 +260,7 @@ html {
          background-color: transparent;
          color: $barelyTransparentBlack;
          font-size: 10rem;
-         animation: arrows 1.5s infinite linear;
+         // animation: arrows 1.5s infinite linear;
 
          @keyframes arrows {
             to {
@@ -230,8 +271,8 @@ html {
 
       &--subpage {
          top: 45%;
-         width: 100rem;
-         min-height: 40rem;
+         width: 75%;
+         // min-height: 40rem;
          background-color: $barelyTransparentBlack;
       }
    }
@@ -250,6 +291,7 @@ html {
          margin-top: 3rem;
          border: 1px solid $white;
          @include basicBoxStyle();
+         background-color: $barelyTransparentBlack;
          font-size: 3rem;
          transition: .2s;
          cursor: pointer;
@@ -377,6 +419,11 @@ html {
       margin: 2rem 5rem;
       border: 2px solid $white;
       box-shadow: 0 5px 5px $transparentBlack;
+      transition: transform .3s, left 1s;
+
+      &:hover {
+         transform: scale(1.05)
+      }
 
       &--subpage {
          left: 0;
@@ -421,91 +468,15 @@ html {
          }
       }
 
-
-      &__A {
-         background: url('../images/thumb1.jpg') no-repeat center;
-         background-size: 100%;
-         transition: background-size .5s, left 1s ease-out;
-
-         &:hover {
-            background-size: 105%;
-         }
-      }
-
-      &__B {
-         background: url('../images/thumb2.jpg') no-repeat center;
-         background-size: 100%;
-         transition: background-size .5s, left 1s ease-out;
-
-         &:hover {
-            background-size: 105%;
-         }
-      }
-
-      &__C {
-         background: url('../images/thumb3.jpg') no-repeat center;
-         background-size: 100%;
-         transition: background-size .5s, left 1s ease-out;
-
-         &:hover {
-            background-size: 105%;
-         }
-      }
-
-      &__D {
-         background: url('../images/thumb4.jpg') no-repeat center;
-         background-size: 100%;
-         transition: background-size .5s, left 1s ease-out;
-
-         &:hover {
-            background-size: 105%;
-         }
-      }
-
-      &__E {
-         background: url('../images/thumb5.jpg') no-repeat center;
-         background-size: 100%;
-         transition: background-size .5s, left 1s ease-out;
-
-         &:hover {
-            background-size: 105%;
-         }
-      }
-
-      &__F {
-         background: url('../images/thumb6.jpg') no-repeat center;
-         background-size: 100%;
-         transition: background-size .5s, left 1s ease-out;
-
-         &:hover {
-            background-size: 105%;
-         }
+      &__img {
+         width: 100%;
+         height: 100%;
       }
    }
 }
 
 .services__section {
    left: 0;
-
-   &__A {
-      background: url('../images/thumb7.jpg') no-repeat top;
-      background-size: 100%;
-      transition: background-size .5s, left 1s ease-out;
-
-      &:hover {
-         background-size: 103%;
-      }
-   }
-
-   &__B {
-      background: url('../images/thumb8.jpg') no-repeat top;
-      background-size: 100%;
-      transition: background-size .5s, left 1s ease-out;
-
-      &:hover {
-         background-size: 103%;
-      }
-   }
 }
 
 //ABOUT
@@ -628,10 +599,6 @@ html {
             }
          }
 
-         &__text--subpage {
-            font-size: 2rem;
-         }
-
          &__link {
             display: none
          }
@@ -651,7 +618,7 @@ html {
       margin: 2rem .5rem;
 
       &:hover {
-         background-size: auto;
+         transform: scale(1)
       }
 
       &__header {
@@ -682,5 +649,29 @@ html {
    .catalog,
    .services {
       padding: 0;
+   }
+}
+
+@media (max-height: 750px) {
+   .intro {
+
+
+      &__title {
+         margin-bottom: 15%;
+         width: 95%;
+
+         &--subpage {
+            top: 50%;
+            width: 85%;
+         }
+
+         &__link {
+            display: none
+         }
+      }
+
+      &__social {
+         display: none;
+      }
    }
 }

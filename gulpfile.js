@@ -31,7 +31,7 @@ gulp.task('distHTML', () =>
 );
 
 gulp.task('distHTML--subpage', () =>
-   gulp.src('src/suknie/gotowe.html')
+   gulp.src('src/suknie/*.html')
    .pipe(gulp.dest('dist/suknie'))
 );
 
@@ -41,7 +41,7 @@ gulp.task('distJS', () =>
 );
 
 gulp.task('distJS--subpage', () =>
-   gulp.src('src/suknie/js/subpage.js')
+   gulp.src('src/suknie/js/*.js')
    .pipe(gulp.dest('dist/suknie/js'))
 );
 

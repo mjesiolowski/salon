@@ -260,7 +260,7 @@ html {
          background-color: transparent;
          color: $barelyTransparentBlack;
          font-size: 10rem;
-         // animation: arrows 1.5s infinite linear;
+         animation: arrows 1.5s infinite linear;
 
          @keyframes arrows {
             to {
@@ -272,7 +272,6 @@ html {
       &--subpage {
          top: 45%;
          width: 75%;
-         // min-height: 40rem;
          background-color: $barelyTransparentBlack;
       }
    }

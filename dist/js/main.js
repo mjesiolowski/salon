@@ -11,7 +11,7 @@ const hamburger = document.querySelector('.menu__burger')
 const hiddenMenu = document.querySelector('.menu__hidden')
 const hiddenMenuLinks = document.querySelectorAll('.menu__hidden__link')
 
-
+//scroll handlers
 window.addEventListener("scroll", function () {
    if (window.scrollY >= 300) {
       navbar.style.fontSize = "1.4rem"
@@ -42,6 +42,7 @@ window.addEventListener("scroll", function () {
    }
 })
 
+//hamburger and hidden menu handlers
 hamburger.addEventListener('click', () => {
    hiddenMenu.classList.toggle('menu__hidden--active')
    hamburger.classList.toggle('menu__burger--active')

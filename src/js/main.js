@@ -1,11 +1,13 @@
-const navbar = document.querySelector('.menu')
+const menu = document.querySelector('.menu')
 
 const catolog = document.querySelector('.catalog')
 const services = document.querySelector('.services')
 const about = document.querySelector('.about')
 const contact = document.querySelector('.contact')
 
-const navbarLinks = document.querySelectorAll('.menu__link')
+const menuLogo = document.querySelector('.menu__logo')
+const menuTitle = document.querySelector('.menu__title')
+const menuLinks = document.querySelectorAll('.menu__link')
 const catalogSection = document.querySelectorAll('.catalog__section')
 const hamburger = document.querySelector('.menu__burger')
 const hiddenMenu = document.querySelector('.menu__hidden')
@@ -14,31 +16,37 @@ const hiddenMenuLinks = document.querySelectorAll('.menu__hidden__link')
 //scroll handlers
 window.addEventListener("scroll", function () {
    if (window.scrollY >= 300) {
-      navbar.style.fontSize = "1.4rem"
+      menu.style.fontSize = "1.4rem"
+      menuLogo.style.fontSize = "1.8rem"
+      menuTitle.style.fontSize = "1.2rem"
       catalogSection.forEach(section => section.style.left = 0)
-   } else navbar.style.fontSize = "2rem"
-
-   if (window.scrollY < catalog.offsetTop) {
-      navbarLinks[0].classList.add('menu__link--active')
+   } else {
+      menu.style.fontSize = "2rem"
+      menuLogo.style.fontSize = "2.3rem"
+      menuTitle.style.fontSize = "1.4rem"
    }
 
-   navbarLinks.forEach(navbarLink => navbarLink.classList.remove('menu__link--active'))
+   if (window.scrollY < catalog.offsetTop) {
+      menuLinks[0].classList.add('menu__link--active')
+   }
+
+   menuLinks.forEach(navbarLink => navbarLink.classList.remove('menu__link--active'))
 
    if (window.scrollY < catalog.offsetTop) {
-      navbarLinks[0].classList.add('menu__link--active')
+      menuLinks[0].classList.add('menu__link--active')
    }
 
    if (window.scrollY >= catalog.offsetTop && window.scrollY < services.offsetTop) {
-      navbarLinks[1].classList.add('menu__link--active')
+      menuLinks[1].classList.add('menu__link--active')
    }
    if (window.scrollY >= services.offsetTop && window.scrollY < about.offsetTop) {
-      navbarLinks[2].classList.add('menu__link--active')
+      menuLinks[2].classList.add('menu__link--active')
    }
    if (window.scrollY >= about.offsetTop && window.scrollY < contact.offsetTop - (contact.offsetTop / 10)) {
-      navbarLinks[3].classList.add('menu__link--active')
+      menuLinks[3].classList.add('menu__link--active')
    }
    if (window.scrollY >= contact.offsetTop - (contact.offsetTop / 10)) {
-      navbarLinks[4].classList.add('menu__link--active')
+      menuLinks[4].classList.add('menu__link--active')
    }
 })
 

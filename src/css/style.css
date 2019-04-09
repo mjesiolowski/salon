@@ -130,8 +130,13 @@ html {
     list-style: none; }
     .menu__list .menu__logo {
       flex-basis: 30vw;
-      padding: 2rem;
-      color: #C7900C; }
+      padding: 1rem;
+      color: #C7900C;
+      font-size: 2.3rem;
+      transition: .2s; }
+    .menu__list .menu__title {
+      font-size: 1.4rem;
+      transition: .2s; }
     .menu__list .menu__item {
       position: relative; }
     .menu__list .menu__link {
@@ -175,6 +180,7 @@ html {
     box-shadow: 0 5px 5px rgba(20, 20, 20, 0.8);
     background-color: rgba(20, 20, 20, 0.8);
     color: #efe8e8;
+    background-color: rgba(20, 20, 20, 0.95);
     font-size: 3rem;
     text-align: center; }
     .intro__title__header {
@@ -182,6 +188,8 @@ html {
       letter-spacing: .4rem; }
       .intro__title__header--subpage {
         font-size: 3.5rem; }
+    .intro__title__logo {
+      width: 100%; }
     .intro__title__text {
       padding: 1rem 0;
       font-size: 2.5rem; }
@@ -229,7 +237,8 @@ html {
       .intro__social__item:hover {
         background-color: rgba(20, 20, 20, 0.8);
         color: #C7900C;
-        border: 1px solid #C7900C; }
+        border: 1px solid #C7900C;
+        background-color: rgba(20, 20, 20, 0.95); }
       .intro__social__item:last-child {
         position: fixed;
         bottom: 1%;

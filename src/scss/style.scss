@@ -67,6 +67,8 @@ html {
    font-size: 2rem;
    transition: .3s;
 
+
+
    &--subpage {
       background-color: $barelyTransparentBlack;
    }
@@ -108,7 +110,6 @@ html {
          height: 100vh;
          display: flex;
          flex-direction: column;
-         // flex-wrap: wrap;
          align-items: center;
          justify-content: space-evenly;
          list-style: none;
@@ -120,16 +121,10 @@ html {
 
          .menu__hidden__link {
             display: block;
-            // height: 5vh;
-            // padding: 1.5rem 0;
             @include button();
             border: none;
             font-size: 2.6rem;
             transition: .2s;
-
-            // &:hover {
-            //    @include hover
-            // }
          }
       }
    }
@@ -140,7 +135,6 @@ html {
       left: 50%;
       transform: translateX(-50%);
       min-width: 18vw;
-      // border: 1px solid $white;
       background-color: $transparentBlack;
       list-style: none;
       visibility: hidden;
@@ -153,7 +147,6 @@ html {
    &__dropdown__link {
       display: block;
       padding: 1rem 0;
-      // border: 1px solid $white;
       @include button();
       border: none;
       border-radius: 0;
@@ -174,8 +167,15 @@ html {
 
       .menu__logo {
          flex-basis: 30vw;
-         padding: 2rem;
+         padding: 1rem;
          color: $gold;
+         font-size: 2.3rem;
+         transition: .2s;
+      }
+
+      .menu__title {
+         font-size: 1.4rem;
+         transition: .2s;
       }
 
       .menu__item {
@@ -224,6 +224,7 @@ html {
       width: 50rem;
       padding: 1rem;
       @include basicBoxStyle();
+      background-color: $barelyTransparentBlack;
       font-size: 3rem;
       text-align: center;
 
@@ -235,6 +236,10 @@ html {
          &--subpage {
             font-size: 3.5rem;
          }
+      }
+
+      &__logo {
+         width: 100%;
       }
 
       &__text {
@@ -296,7 +301,8 @@ html {
          cursor: pointer;
 
          &:hover {
-            @include hover
+            @include hover;
+            background-color: $barelyTransparentBlack;
          }
 
          &:last-child {

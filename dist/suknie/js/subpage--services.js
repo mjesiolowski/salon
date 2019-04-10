@@ -1,5 +1,7 @@
-const navbar = document.querySelector('.menu')
-const navbarLinks = document.querySelectorAll('.menu__link')
+const menu = document.querySelector('.menu')
+const menuLinks = document.querySelectorAll('.menu__link')
+const menuLogo = document.querySelector('.menu__logo')
+const menuTitle = document.querySelector('.menu__title')
 const dropdownList = document.querySelector('.menu__dropdown__list')
 
 const hamburger = document.querySelector('.menu__burger')
@@ -9,10 +11,16 @@ const hiddenMenuLinks = document.querySelectorAll('.menu__hidden__link')
 //scroll handlers
 window.addEventListener("scroll", function () {
    if (window.scrollY >= 300) {
-      navbar.style.fontSize = "1.4rem"
-   } else navbar.style.fontSize = "2rem"
+      menu.style.fontSize = "1.4rem"
+      menuLogo.style.fontSize = "1.8rem"
+      menuTitle.style.fontSize = "1.2rem"
+      catalogSection.forEach(section => section.style.left = 0)
+   } else {
+      menu.style.fontSize = "2rem"
+      menuLogo.style.fontSize = "2.3rem"
+      menuTitle.style.fontSize = "1.4rem"
+   }
 })
-
 //hamburger handlers
 hamburger.addEventListener('click', () => {
    hiddenMenu.classList.toggle('menu__hidden--active')
@@ -25,6 +33,6 @@ hiddenMenuLinks.forEach(link => link.addEventListener('click', () => {
 
 //dropdown handlers
 
-navbarLinks[1].addEventListener('click', () => {
+menuLinks[1].addEventListener('click', () => {
    dropdownList.classList.toggle('menu__dropdown__list--active')
 })

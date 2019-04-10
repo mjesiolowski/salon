@@ -45,6 +45,11 @@ gulp.task('distJS--subpage', () =>
    .pipe(gulp.dest('dist/suknie/js'))
 );
 
+gulp.task('distImages', () =>
+   gulp.src('src/images/*')
+   .pipe(gulp.dest('dist/images'))
+);
+
 gulp.task('autoprefixer', () =>
    gulp.src('src/css/style.css')
    .pipe(autoprefixer({
@@ -63,6 +68,6 @@ gulp.task('nano', function () {
       .pipe(gulp.dest('dist/css/'));
 });
 
-gulp.task("build", (gulp.series('distHTML', 'distHTML--subpage', 'distJS--subpage', 'distJS', 'autoprefixer', 'nano')));
+gulp.task("build", (gulp.series('distHTML', 'distHTML--subpage', 'distJS--subpage', 'distJS', 'distImages', 'autoprefixer', 'nano')));
 
 gulp.task("default", (gulp.series("serve")));

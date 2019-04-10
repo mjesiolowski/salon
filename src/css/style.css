@@ -200,7 +200,7 @@ html {
       font-size: 2rem; }
     .intro__title__link {
       position: absolute;
-      bottom: -50%;
+      bottom: -30%;
       left: 50%;
       transform: translate(-50%, 50%);
       border: none;
@@ -211,7 +211,7 @@ html {
 
 @keyframes arrows {
   to {
-    bottom: -70%; } }
+    bottom: -50%; } }
     .intro__title--subpage {
       top: 45%;
       width: 75%;

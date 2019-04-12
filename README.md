@@ -14,5 +14,5 @@ To achieve my goal I implemented the following elements:
 Technology used:
 - SASS (BEM)
 - JavaScript
-- GULP
+- Gulp
 - RWD

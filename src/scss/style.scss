@@ -258,7 +258,7 @@ html {
 
       &__link {
          position: absolute;
-         bottom: -30%;
+         bottom: -20%;
          left: 50%;
          transform: translate(-50%, 50%);
          border: none;
@@ -267,15 +267,26 @@ html {
          font-size: 10rem;
          animation: arrows 1.5s infinite linear;
 
+         &--subpage {
+            bottom: -100%;
+            animation: arrows--subpage 1.5s infinite linear;
+         }
+
          @keyframes arrows {
             to {
-               bottom: -50%;
+               bottom: -40%;
+            }
+         }
+
+         @keyframes arrows--subpage {
+            to {
+               bottom: -150%;
             }
          }
       }
 
       &--subpage {
-         top: 45%;
+         top: 40%;
          width: 75%;
          background-color: $barelyTransparentBlack;
       }
@@ -305,10 +316,17 @@ html {
             background-color: $barelyTransparentBlack;
          }
 
-         &:last-child {
+         &--arrow {
             position: fixed;
             bottom: 1%;
             right: 1%;
+         }
+
+         &--fb {
+            position: relative;
+            top: 0;
+            right: 0;
+            width: 100%;
          }
       }
 
@@ -342,9 +360,7 @@ html {
    flex-basis: 100vw;
    justify-content: center;
    align-items: center;
-   // min-height: 50vh;
    padding: 10rem 2rem;
-   // box-shadow: 0 5px 5px $transparentBlack;
    background-color: $transparentBlack;
 
 
@@ -519,6 +535,10 @@ html {
       &__text {
          padding: 1rem;
          font-size: 2rem;
+
+         &--list {
+            text-align: left;
+         }
       }
    }
 }
@@ -565,6 +585,29 @@ html {
    }
 }
 
+@media (max-height: 750px) {
+   .intro {
+
+
+      &__title {
+         margin-bottom: 15%;
+         width: 50%;
+
+         &--subpage {
+            top: 50%;
+            width: 85%;
+         }
+
+         &__link {
+            display: none
+         }
+      }
+
+      &__social {
+         display: none;
+      }
+   }
+}
 
 @media (max-width: 850px) {
 
@@ -654,29 +697,5 @@ html {
    .catalog,
    .services {
       padding: 0;
-   }
-}
-
-@media (max-height: 750px) {
-   .intro {
-
-
-      &__title {
-         margin-bottom: 15%;
-         width: 95%;
-
-         &--subpage {
-            top: 50%;
-            width: 85%;
-         }
-
-         &__link {
-            display: none
-         }
-      }
-
-      &__social {
-         display: none;
-      }
    }
 }

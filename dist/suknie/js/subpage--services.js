@@ -14,7 +14,6 @@ window.addEventListener("scroll", function () {
       menu.style.fontSize = "1.4rem"
       menuLogo.style.fontSize = "1.8rem"
       menuTitle.style.fontSize = "1.2rem"
-      catalogSection.forEach(section => section.style.left = 0)
    } else {
       menu.style.fontSize = "2rem"
       menuLogo.style.fontSize = "2.3rem"

@@ -46,7 +46,7 @@ gulp.task('distJS--subpage', () =>
 );
 
 gulp.task('distImages', () =>
-   gulp.src('src/images/*')
+   gulp.src('src/images/**/*')
    .pipe(gulp.dest('dist/images'))
 );
 

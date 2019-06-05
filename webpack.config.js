@@ -28,18 +28,18 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
                 test: /\.(png|jpg)$/,
                 loader: 'url-loader'
-            }
-
+            },
         ]
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
         publicPath: '/scripts/',
+        watchContentBase: true
     },
     devtool: 'source-map'
 }

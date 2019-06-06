@@ -1,35 +1,9 @@
-$transparentBlack: rgba(20, 20, 20, .8);
-$barelyTransparentBlack: rgba(20, 20, 20, .95);
-$white: rgb(239, 232, 232);
-$gold: #f9c532;
-
-@mixin hover() {
-   background-color: $transparentBlack;
-   color: $gold;
-   border: 1px solid $gold;
-}
-
-@mixin basicBoxStyle() {
-   box-shadow: 0 5px 5px $transparentBlack;
-   background-color: $transparentBlack;
-   color: $white;
-}
-
-@mixin button() {
-   border: 1px solid $white;
-   border-radius: 5%;
-   color: $white;
-   text-decoration: none;
-   text-transform: uppercase;
-   text-align: center;
-   letter-spacing: .3rem;
-   cursor: pointer;
-}
-
 // @font-face {
 //    font-family: 'Open-Sans';
 //    src: url('../../public/fonts/OpenSans-Regular.ttf') format('truetype');
 // }
+
+@import 'variables';
 
 * {
    margin: 0;
@@ -46,28 +20,28 @@ html {
 .container {
    display: flex;
    flex-wrap: wrap;
-   background: url('../../public/images/bg.jpg') no-repeat left fixed;
+   background: url('../images/bg.jpg') no-repeat left fixed;
    overflow: hidden;
 
    &--subpage {
       &--gotowe {
-         // background: url('../../public/images/bg2.jpg') no-repeat center fixed;
+         background: url('../images/bg2.jpg') no-repeat center fixed;
       }
 
       &--xl {
-         // background: url('../../public/images/bg2-s.jpg') no-repeat center fixed;
+         background: url('../images/bg2-s.jpg') no-repeat center fixed;
       }
 
       &--wizytowe {
-         // background: url('../../public/images/bg4.jpg') no-repeat top fixed;
+         background: url('../images/bg3.jpg') no-repeat top fixed;
       }
 
       &--dodatki {
-         // background: url('../../public/images/bg3.jpg') no-repeat center fixed;
+         background: url('../images/bg3.jpg') no-repeat center fixed;
       }
 
       &--czyszczenie {
-         // background: url('../../public/images/bg2.jpg') no-repeat center fixed;
+         background: url('...images/bg2.jpg') no-repeat center fixed;
       }
 
 
@@ -433,7 +407,7 @@ html {
          font-size: 6rem;
          color: $white;
          cursor: pointer;
-         transition: .1s;
+         // transition: .1s;
 
          &:hover {
             color: $gold;
@@ -448,7 +422,7 @@ html {
          font-size: 6rem;
          color: $white;
          cursor: pointer;
-         transition: .1s;
+         // transition: .1s;
 
          &:hover {
             color: $gold;
@@ -459,7 +433,7 @@ html {
    &__section {
       position: relative;
       top: 0;
-      left: 0yvw;
+      left: 0vw;
       width: 30rem;
       height: 45rem;
       margin: 2rem 5rem;

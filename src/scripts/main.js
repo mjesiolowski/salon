@@ -14,7 +14,10 @@ const main = {
       this.hiddenMenu = document.querySelector('.menu__hidden')
       this.hiddenMenuLinks = document.querySelectorAll('.menu__hidden__link')
 
+      this.footerDate = document.querySelector('.footer__date')
+
       this.toggleHiddenMenuClass()
+      this.setFooterDate()
 
       window.addEventListener("scroll", () => {
             const safetyTreshold = 10
@@ -83,6 +86,10 @@ const main = {
       if (condition) {
          this.menuLinks[linkPosition].classList.add('menu__link--active')
       }
+   },
+
+   setFooterDate() {
+      this.footerDate.textContent = new Date().getFullYear()
    }
 }
 

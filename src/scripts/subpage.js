@@ -18,6 +18,8 @@ const subpage = {
       this.modalRightArrow = document.querySelector('.catalog__modal__rightArrow')
       this.modalLeftArrow = document.querySelector('.catalog__modal__leftArrow')
 
+      this.footerDate = document.querySelector('.footer__date')
+
       window.addEventListener("scroll", () => {
          if (window.scrollY >= 300) {
             this.menu.style.fontSize = "1.4rem"
@@ -49,6 +51,7 @@ const subpage = {
          else this.dropdownList.classList.remove('menu__dropdown__list--active')
       })
 
+      this.setFooterDate()
       this.toggleHamburger()
       this.generateImages(158, this.generateDOM, 'duber')
       this.generateImages(1, this.generateDOM, 'dodatki')
@@ -118,6 +121,9 @@ const subpage = {
       for (let i = 1; i <= photosNumber; i++) {
          callback.call(this, i, collection)
       }
+   },
+   setFooterDate() {
+      this.footerDate.textContent = new Date().getFullYear()
    }
 
 }

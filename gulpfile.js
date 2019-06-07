@@ -36,19 +36,20 @@ gulp.task('distHTML--subpage', () =>
 );
 
 gulp.task('distJS', () =>
-   gulp.src('src/scripts/main.js')
+   gulp.src('src/scripts/**/*')
    .pipe(gulp.dest('dist/scripts'))
-);
-
-gulp.task('distJS--subpage', () =>
-   gulp.src('src/suknie/js/*.js')
-   .pipe(gulp.dest('dist/suknie/js'))
 );
 
 gulp.task('distImages', () =>
    gulp.src('src/images/**/*')
    .pipe(gulp.dest('dist/images'))
 );
+
+gulp.task('distFonts', () =>
+   gulp.src('src/fonts/**/*')
+   .pipe(gulp.dest('dist/fonts'))
+);
+
 
 gulp.task('autoprefixer', () =>
    gulp.src('src/css/styles.css')
@@ -68,6 +69,6 @@ gulp.task('nano', function () {
       .pipe(gulp.dest('dist/css/'));
 });
 
-gulp.task("build", (gulp.series('distHTML', 'distHTML--subpage', 'distJS--subpage', 'distJS', 'distImages', 'autoprefixer', 'nano')));
+gulp.task("build", (gulp.series('distHTML', 'distHTML--subpage', 'distJS', 'distImages', 'distFonts', 'autoprefixer', 'nano')));
 
 gulp.task("default", (gulp.series("serve")));

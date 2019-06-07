@@ -1,28 +1,27 @@
+@font-face {
+  font-family: 'Open-Sans';
+  font-display: auto;
+  src: url("../fonts/OpenSans-Regular.ttf") format("truetype"); }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Open Sans', Arial, sans-serif; }
+  font-family: 'Open-Sans', Arial, sans-serif; }
 
 html {
   font-size: 62.5%;
   scroll-behavior: smooth; }
 
+body {
+  background: url("../images/bg.jpg") no-repeat left fixed; }
+
 .container {
   display: flex;
   flex-wrap: wrap;
-  background: url("../images/bg.jpg") no-repeat left fixed;
   overflow: hidden; }
-  .container--subpage--gotowe {
+  .container--subpage {
     background: url("../images/bg2.jpg") no-repeat center fixed; }
-  .container--subpage--xl {
-    background: url("../images/bg2-s.jpg") no-repeat center fixed; }
-  .container--subpage--wizytowe {
-    background: url("../images/bg3.jpg") no-repeat top fixed; }
-  .container--subpage--dodatki {
-    background: url("../images/bg3.jpg") no-repeat center fixed; }
-  .container--subpage--czyszczenie {
-    background: url("...images/bg2.jpg") no-repeat center fixed; }
 
 .menu {
   position: fixed;
@@ -335,7 +334,7 @@ html {
   .events__section {
     position: relative;
     top: 0;
-    left: 0yvw;
+    left: 0vw;
     width: 30rem;
     height: 45rem;
     margin: 2rem 5rem;
@@ -408,7 +407,7 @@ html {
 .about {
   position: relative;
   width: 100vw;
-  background: url("../../public/images/bg2_s.jpg") fixed center;
+  background: url("../images/bg2_s.jpg") fixed center;
   padding-bottom: 8rem; }
   .about__logo {
     position: relative;
@@ -417,7 +416,7 @@ html {
     transform: translateX(-50%);
     height: 50rem;
     width: 50rem;
-    background: url("../../public/images/logo.png") center no-repeat;
+    background: url("../images/logo.png") center no-repeat;
     background-size: contain; }
   .about__content {
     box-shadow: 0 5px 5px rgba(20, 20, 20, 0.8);

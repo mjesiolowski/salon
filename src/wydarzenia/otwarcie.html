@@ -8,20 +8,21 @@
 	<meta name="description"
 		content="Salon sukien ślubnych w Turku | suknie gotowe, suknie szyte na miarę, suknie xl, suknie wizytowe, dodatki, komis, czyszczenie | Turek">
 	<title>NataliQ | Salon sukien ślubnych i wizytowych w Turku</title>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
-	<div id="top" class="container container--subpage container--subpage--gotowe">
+	<div id="top" class="container container--subpage">
 
 		<nav class="menu menu--subpage">
 			<ul class="menu__list">
-				<li class="menu__logo">NataliQ<br><span class="menu__title">Salon sukien ślubnych i wizytowych</span></li>
+				<li class="menu__logo">NataliQ<br><span class="menu__title">Salon sukien ślubnych i
+						wizytowych</span></li>
 				<li class="menu__item"><a class="menu__link" href="../index.html#top" aria-label="Home link"><i
 							class="fas fa-home"></i></a></li>
-				<li class="menu__item"><a class="menu__link">Suknie<i
+				<li class="menu__item"><a id="menu-link" class="menu__link">Suknie<i
 							class="menu__link__dropdown fas fa-caret-down"></i></a>
 					<ul class="menu__dropdown__list">
 						<li class="menu__dropdown__item"><a href="../suknie/duber.html" class="menu__dropdown__link">Duber</a>
@@ -76,7 +77,7 @@
 		<section class="intro intro--subpage intro--events">
 			<div class="intro__title intro__title--subpage">
 				<h1 class="intro__title__header intro__title__header--subpage">Otwarcie salonu</h1>
-				<p class="intro__title__text intro__title__text--subpage">Sekcja w budowie.</p>
+				<p class="intro__title__text intro__title__text--subpage">13 kwietnia 2019</p>
 				<a class="intro__title__link intro__title__link--subpage" href="#catalog"><i
 						class="fas fa-angle-double-down"></i></a>
 			</div>
@@ -93,59 +94,16 @@
 		</section>
 
 		<section id="catalog" class="catalog catalog--subpage">
-			<div class="catalog__modal">
+			<div id="catalog_modal" class="catalog__modal">
 				<div class="catalog__modal__content">
 					<img class="catalog__modal__img" alt="wedding dress photo">
 					<i class="catalog__modal__closeBtn fas fa-times-circle"></i>
 					<i class="catalog__modal__rightArrow fas fa-arrow-circle-right"></i>
 					<i class="catalog__modal__leftArrow fas fa-arrow-circle-left"></i>
 				</div>
-
-			</div>
-			<div class="catalog__section catalog__section--subpage">
-				<img class="catalog__section--subpage__img" src="../images/slubne/slubne (1).jpg" alt="wedding dress photo">
-			</div>
-			<div class="catalog__section catalog__section--subpage">
-				<img class="catalog__section--subpage__img" src="../images/slubne/slubne (2).jpg" alt="wedding dress photo">
-			</div>
-			<div class="catalog__section catalog__section--subpage">
-				<img class="catalog__section--subpage__img" src="../images/slubne/slubne (3).jpg" alt="wedding dress photo">
-			</div>
-			<div class="catalog__section catalog__section--subpage">
-				<img class="catalog__section--subpage__img" src="../images/slubne/slubne (4).jpg" alt="wedding dress photo">
-			</div>
-			<div class="catalog__section catalog__section--subpage">
-				<img class="catalog__section--subpage__img" src="../images/slubne/slubne (5).jpg" alt="wedding dress photo">
-			</div>
-			<div class="catalog__section catalog__section--subpage">
-				<img class="catalog__section--subpage__img" src="../images/slubne/slubne (6).jpg" alt="wedding dress photo">
-			</div>
-			<div class="catalog__section catalog__section--subpage">
-				<img class="catalog__section--subpage__img" src="../images/slubne/slubne (7).jpg" alt="wedding dress photo">
-			</div>
-			<div class="catalog__section catalog__section--subpage">
-				<img class="catalog__section--subpage__img" src="../images/slubne/slubne (8).jpg" alt="wedding dress photo">
-			</div>
-			<div class="catalog__section catalog__section--subpage">
-				<img class="catalog__section--subpage__img" src="../images/slubne/slubne (9).jpg" alt="wedding dress photo">
-			</div>
-			<div class="catalog__section catalog__section--subpage">
-				<img class="catalog__section--subpage__img" src="../images/slubne/slubne (10).jpg"
-					alt="wedding dress photo">
-			</div>
-			<div class="catalog__section catalog__section--subpage">
-				<img class="catalog__section--subpage__img" src="../images/slubne/slubne (11).jpg"
-					alt="wedding dress photo">
-			</div>
-			<div class="catalog__section catalog__section--subpage">
-				<img class="catalog__section--subpage__img" src="../images/slubne/slubne (12).jpg"
-					alt="wedding dress photo">
-			</div>
-			<div class="catalog__section catalog__section--subpage">
-				<img class="catalog__section--subpage__img" src="../images/slubne/slubne (13).jpg"
-					alt="wedding dress photo">
 			</div>
 
+			<!-- Pictures generated by scripts -->
 
 		</section>
 
@@ -172,7 +130,8 @@
 		</footer>
 	</div>
 
-	<script src="../scripts/subpageEvents.bundle.js"></script>
+
+	<script src="../scripts/subpage.js"></script>
 </body>
 
 </html>

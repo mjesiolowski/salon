@@ -1,7 +1,8 @@
-// @font-face {
-//    font-family: 'Open-Sans';
-//    src: url('../../public/fonts/OpenSans-Regular.ttf') format('truetype');
-// }
+@font-face {
+   font-family: 'Open-Sans';
+   font-display: auto;
+   src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
+}
 
 @import 'variables';
 
@@ -9,7 +10,7 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   font-family: 'Open Sans', Arial, sans-serif;
+   font-family: 'Open-Sans', Arial, sans-serif;
 }
 
 html {
@@ -17,34 +18,17 @@ html {
    scroll-behavior: smooth;
 }
 
+body {
+   background: url('../images/bg.jpg') no-repeat left fixed;
+}
+
 .container {
    display: flex;
    flex-wrap: wrap;
-   background: url('../images/bg.jpg') no-repeat left fixed;
    overflow: hidden;
 
    &--subpage {
-      &--gotowe {
-         background: url('../images/bg2.jpg') no-repeat center fixed;
-      }
-
-      &--xl {
-         background: url('../images/bg2-s.jpg') no-repeat center fixed;
-      }
-
-      &--wizytowe {
-         background: url('../images/bg3.jpg') no-repeat top fixed;
-      }
-
-      &--dodatki {
-         background: url('../images/bg3.jpg') no-repeat center fixed;
-      }
-
-      &--czyszczenie {
-         background: url('...images/bg2.jpg') no-repeat center fixed;
-      }
-
-
+      background: url('../images/bg2.jpg') no-repeat center fixed;
    }
 }
 
@@ -505,7 +489,7 @@ html {
 .about {
    position: relative;
    width: 100vw;
-   background: url('../../public/images/bg2_s.jpg') fixed center;
+   background: url('../images/bg2_s.jpg') fixed center;
    padding-bottom: 8rem;
 
    &__logo {
@@ -515,7 +499,7 @@ html {
       transform: translateX(-50%);
       height: 50rem;
       width: 50rem;
-      background: url('../../public/images/logo.png') center no-repeat;
+      background: url('../images/logo.png') center no-repeat;
       background-size: contain;
    }
 

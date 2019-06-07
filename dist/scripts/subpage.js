@@ -56,7 +56,6 @@ const subpage = {
       this.generateImages(52, this.generateDOM, 'sedinum_bridal')
       this.generateImages(13, this.generateDOM, 'slubne')
       this.generateImages(45, this.generateDOM, 'wizytowe')
-      this.generateImages(4, this.generateDOM, 'otwarcie')
 
    },
    toggleHamburger() {

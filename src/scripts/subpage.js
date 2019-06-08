@@ -31,8 +31,8 @@ const subpage = {
             this.menuTitle.style.fontSize = "1.4rem"
          }
       }, {
-         passive: true
-      })
+            passive: true
+         })
 
       this.hamburger.addEventListener('click', () => {
          this.hiddenMenu.classList.toggle('menu__hidden--active')
@@ -54,7 +54,7 @@ const subpage = {
       this.setFooterDate()
       this.toggleHamburger()
       this.generateImages(158, this.generateDOM, 'duber')
-      this.generateImages(1, this.generateDOM, 'dodatki')
+      this.generateImages(5, this.generateDOM, 'dodatki')
       this.generateImages(31, this.generateDOM, 'plus_size')
       this.generateImages(52, this.generateDOM, 'sedinum_bridal')
       this.generateImages(13, this.generateDOM, 'slubne')
@@ -76,23 +76,31 @@ const subpage = {
 
             this.modalImage.setAttribute('src', srcValue)
 
-            //right arrow
-            this.modalRightArrow.addEventListener('click', () => {
+            const handleRightArrowModal = () => {
                if (indexValue === subpageImg.length - 1) {
                   indexValue = -1
                }
                srcValue = subpageImg[++indexValue].attributes.src.nodeValue
                this.modalImage.setAttribute('src', srcValue)
-            })
+            }
 
-            //left arrow
-            this.modalLeftArrow.addEventListener('click', () => {
+            const handleLeftArrowModal = () => {
                if (indexValue === 0) {
                   indexValue = subpageImg.length
                }
                srcValue = subpageImg[--indexValue].attributes.src.nodeValue
                this.modalImage.setAttribute('src', srcValue)
+            }
+
+            this.modalRightArrow.addEventListener('click', handleRightArrowModal)
+
+            this.modalLeftArrow.addEventListener('click', handleLeftArrowModal)
+
+            document.addEventListener('keydown', (e) => {
+               if (e.keyCode === 39) handleRightArrowModal()
+               else if (e.keyCode === 37) handleLeftArrowModal()
             })
+
          })
       })
    },

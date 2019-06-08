@@ -1,67 +1,95 @@
-// import './scss/styles.scss'
+"use strict";
 
-const menu = document.querySelector('.menu')
+var main = {
+  init: function init() {
+    var _this = this;
 
-// const catolog = document.querySelector('.catalog')
-const events = document.querySelector('.events')
-const about = document.querySelector('.about')
-const contact = document.querySelector('.contact')
+    this.menu = document.querySelector('.menu');
+    this.events = document.querySelector('.events');
+    this.about = document.querySelector('.about');
+    this.contact = document.querySelector('.contact');
+    this.menuLogo = document.querySelector('.menu__logo');
+    this.menuTitle = document.querySelector('.menu__title');
+    this.menuLinks = document.querySelectorAll('.menu__link');
+    this.hamburger = document.querySelector('.menu__burger');
+    this.hiddenMenu = document.querySelector('.menu__hidden');
+    this.hiddenMenuLinks = document.querySelectorAll('.menu__hidden__link');
+    this.footerDate = document.querySelector('.footer__date');
+    this.toggleHiddenMenuClass();
+    this.setFooterDate();
+    window.addEventListener("scroll", function () {
+      var safetyTreshold = 10;
+      var menuFontSize = {
+        styleFontL: "2rem",
+        logoFontL: "2.3rem",
+        titleFontL: "1.4rem",
+        styleFontS: "1.4rem",
+        logoFontS: "1.8rem",
+        titleFontS: "1.2rem"
+      };
 
-const menuLogo = document.querySelector('.menu__logo')
-const menuTitle = document.querySelector('.menu__title')
-const menuLinks = document.querySelectorAll('.menu__link')
-// const catalogSection = document.querySelectorAll('.catalog__section')
-const hamburger = document.querySelector('.menu__burger')
-const hiddenMenu = document.querySelector('.menu__hidden')
-const hiddenMenuLinks = document.querySelectorAll('.menu__hidden__link')
+      _this.handleMenuFontSize(300, menuFontSize);
 
-//scroll handlers
-window.addEventListener("scroll", () => {
-   if (window.scrollY >= 300) {
-      menu.style.fontSize = "1.4rem"
-      menuLogo.style.fontSize = "1.8rem"
-      menuTitle.style.fontSize = "1.2rem"
-      // catalogSection.forEach(section => section.style.left = 0)
-   } else {
-      menu.style.fontSize = "2rem"
-      menuLogo.style.fontSize = "2.3rem"
-      menuTitle.style.fontSize = "1.4rem"
-   }
+      _this.removeActiveClassFromMenu();
 
-   if (window.scrollY < catalog.offsetTop) {
-      menuLinks[0].classList.add('menu__link--active')
-   }
+      _this.handleMenuHighlight(window.scrollY < catalog.offsetTop, 0);
 
-   menuLinks.forEach(navbarLink => navbarLink.classList.remove('menu__link--active'))
+      _this.handleMenuHighlight(window.scrollY >= catalog.offsetTop && window.scrollY < events.offsetTop, 1);
 
-   if (window.scrollY < catalog.offsetTop) {
-      menuLinks[0].classList.add('menu__link--active')
-   }
+      _this.handleMenuHighlight(window.scrollY >= events.offsetTop && window.scrollY < about.offsetTop, 2);
 
-   if (window.scrollY >= catalog.offsetTop && window.scrollY < events.offsetTop) {
-      menuLinks[1].classList.add('menu__link--active')
-   }
-   if (window.scrollY >= events.offsetTop && window.scrollY < about.offsetTop) {
-      menuLinks[2].classList.add('menu__link--active')
-   }
-   if (window.scrollY >= about.offsetTop && window.scrollY < contact.offsetTop - (contact.offsetTop / 10)) {
-      menuLinks[3].classList.add('menu__link--active')
-   }
-   if (window.scrollY >= contact.offsetTop - (contact.offsetTop / 10)) {
-      menuLinks[4].classList.add('menu__link--active')
-   }
-}, {
-   passive: true
-})
+      _this.handleMenuHighlight(window.scrollY >= about.offsetTop && window.scrollY < contact.offsetTop - contact.offsetTop / safetyTreshold, 3);
 
-//hamburger and hidden menu handlers
-hamburger.addEventListener('click', () => {
-   hiddenMenu.classList.toggle('menu__hidden--active')
-   hamburger.classList.toggle('menu__burger--active')
-}, {
-   passive: true
-})
+      _this.handleMenuHighlight(window.scrollY >= contact.offsetTop - contact.offsetTop / safetyTreshold, 4);
+    }, {
+      passive: true
+    }), this.hamburger.addEventListener('click', function () {
+      _this.hiddenMenu.classList.toggle('menu__hidden--active');
 
-hiddenMenuLinks.forEach(link => link.addEventListener('click', () => {
-   hiddenMenu.classList.toggle('menu__hidden--active')
-}))
+      _this.hamburger.classList.toggle('menu__burger--active');
+    }, {
+      passive: true
+    });
+  },
+  toggleHiddenMenuClass: function toggleHiddenMenuClass() {
+    var _this2 = this;
+
+    this.hiddenMenuLinks.forEach(function (link) {
+      return link.addEventListener('click', function () {
+        _this2.hiddenMenu.classList.toggle('menu__hidden--active');
+      });
+    });
+  },
+  handleMenuFontSize: function handleMenuFontSize(scrollPos, _ref) {
+    var styleFontL = _ref.styleFontL,
+        logoFontL = _ref.logoFontL,
+        titleFontL = _ref.titleFontL,
+        styleFontS = _ref.styleFontS,
+        logoFontS = _ref.logoFontS,
+        titleFontS = _ref.titleFontS;
+
+    if (window.scrollY >= scrollPos) {
+      this.menu.style.fontSize = styleFontS;
+      this.menuLogo.style.fontSize = logoFontS;
+      this.menuTitle.style.fontSize = titleFontS; // catalogSection.forEach(section => section.style.left = 0)
+    } else {
+      this.menu.style.fontSize = styleFontL;
+      this.menuLogo.style.fontSize = logoFontL;
+      this.menuTitle.style.fontSize = titleFontL;
+    }
+  },
+  removeActiveClassFromMenu: function removeActiveClassFromMenu() {
+    this.menuLinks.forEach(function (navbarLink) {
+      return navbarLink.classList.remove('menu__link--active');
+    });
+  },
+  handleMenuHighlight: function handleMenuHighlight(condition, linkPosition) {
+    if (condition) {
+      this.menuLinks[linkPosition].classList.add('menu__link--active');
+    }
+  },
+  setFooterDate: function setFooterDate() {
+    this.footerDate.textContent = new Date().getFullYear();
+  }
+};
+main.init();

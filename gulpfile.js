@@ -64,7 +64,7 @@ gulp.task('distFonts', () =>
 gulp.task('autoprefixer', () =>
    gulp.src('src/css/styles.css')
       .pipe(autoprefixer({
-         browsers: ["last 10 versions", "> .1%"],
+         browsers: ["last 10 versions",],
          cascade: false
       }))
       .pipe(gulp.dest('dist/css'))

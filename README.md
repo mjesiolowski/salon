@@ -1,4 +1,4 @@
-# salon
+# NataliQ
 
 ## info
 This is my first commercial project, it presents the offer of an exclusive wedding dress salon. My goal was to make this website readible, easy to navigate, eye-catching, consisent and fully responsive.

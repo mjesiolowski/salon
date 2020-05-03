@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
 var cssnano = require('gulp-cssnano');
 var sourcemaps = require('gulp-sourcemaps');
 var gulp = require('gulp');
@@ -15,7 +14,6 @@ gulp.task('sass', function () {
 });
 
 gulp.task('serve', gulp.series('sass', function () {
-
    browserSync.init({
       server: "./src"
    });
@@ -26,11 +24,7 @@ gulp.task('serve', gulp.series('sass', function () {
 }));
 
 gulp.task('scripts', function () {
-   return gulp.src(
-      [
-         'node_modules/babel-polyfill/dist/polyfill.js',
-         'src/scripts/**/*'
-      ])
+   return gulp.src('src/scripts/**/*')
       .pipe(babel({ presets: ['@babel/preset-env'] }))
       .pipe(gulp.dest('dist/scripts'))
 });
@@ -50,17 +44,6 @@ gulp.task('distFonts', () =>
       .pipe(gulp.dest('dist/fonts'))
 );
 
-
-gulp.task('autoprefixer', () =>
-   gulp.src('src/css/styles.css')
-      .pipe(autoprefixer({
-         browsers: ["last 10 versions",],
-         cascade: false
-      }))
-      .pipe(gulp.dest('dist/css'))
-);
-
-
 gulp.task('nano', function () {
    return gulp.src('dist/css/styles.css')
       .pipe(sourcemaps.init())
@@ -69,6 +52,6 @@ gulp.task('nano', function () {
       .pipe(gulp.dest('dist/css/'));
 });
 
-gulp.task("build", (gulp.series('distHTML', 'scripts', 'distImages', 'distFonts', 'autoprefixer', 'nano')));
+gulp.task("build", (gulp.series('distHTML', 'scripts', 'distImages', 'distFonts', 'nano')));
 
 gulp.task("default", (gulp.series("serve")));

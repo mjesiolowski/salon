@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var cssnano = require('gulp-cssnano');
+var sourcemaps = require('gulp-sourcemaps');
 var gulp = require('gulp');
 var babel = require('gulp-babel');
 

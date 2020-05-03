@@ -1,6 +1,6 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 (function e(t, n, r) {
   function s(o, u) {
@@ -5411,7 +5411,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     var proto = $Number.prototype; // Opera ~12 has broken Object#toString
 
     var BROKEN_COF = cof(_dereq_(71)(proto)) == NUMBER;
-    var TRIM = 'trim' in String.prototype; // 7.1.3 ToNumber(argument)
+    var TRIM = ('trim' in String.prototype); // 7.1.3 ToNumber(argument)
 
     var toNumber = function toNumber(argument) {
       var it = toPrimitive(argument, false);

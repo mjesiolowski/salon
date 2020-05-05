@@ -1,4 +1,37 @@
 const subpage = {
+   images: [
+      {
+         collection: 'duber',
+         photosNumber: 158,
+      }, {
+         collection: 'dodatki',
+         photosNumber: 5,
+      }, {
+         collection: 'plus_size',
+         photosNumber: 31,
+      }, {
+         collection: 'sedinum_bridal',
+         photosNumber: 52,
+      }, {
+         collection: 'slubne',
+         photosNumber: 13,
+      }, {
+         collection: 'wizytowe',
+         photosNumber: 45,
+      }, {
+         collection: 'otwarcie',
+         photosNumber: 4,
+      }, {
+         collection: 'sedinum_bridal_2020',
+         photosNumber: 11,
+      }, {
+         collection: 'annais_bridal_2020',
+         photosNumber: 17,
+      }, {
+         collection: 'modeca_2020',
+         photosNumber: 11,
+      },
+   ],
    init() {
       this.menu = document.querySelector('.menu')
       this.menuLogo = document.querySelector('.menu__logo')
@@ -20,6 +53,10 @@ const subpage = {
 
       this.footerDate = document.querySelector('.footer__date')
 
+      // this.images.forEach(({ name, number }) => {
+      //    this.generateImages(number, this.generateDOM, name)
+      // })
+
       window.addEventListener("scroll", () => {
          if (window.scrollY >= 300) {
             this.menu.style.fontSize = "1.4rem"
@@ -31,8 +68,8 @@ const subpage = {
             this.menuTitle.style.fontSize = "1.4rem"
          }
       }, {
-            passive: true
-         })
+         passive: true
+      })
 
       this.hamburger.addEventListener('click', () => {
          this.hiddenMenu.classList.toggle('menu__hidden--active')
@@ -53,14 +90,7 @@ const subpage = {
 
       this.setFooterDate()
       this.toggleHamburger()
-      this.generateImages(158, this.generateDOM, 'duber')
-      this.generateImages(5, this.generateDOM, 'dodatki')
-      this.generateImages(31, this.generateDOM, 'plus_size')
-      this.generateImages(52, this.generateDOM, 'sedinum_bridal')
-      this.generateImages(13, this.generateDOM, 'slubne')
-      this.generateImages(45, this.generateDOM, 'wizytowe')
-      this.generateImages(4, this.generateDOM, 'otwarcie')
-
+      this.generateImages()
    },
    toggleHamburger() {
       this.hiddenMenuLinks.forEach(link => link.addEventListener('click', () => {
@@ -108,7 +138,9 @@ const subpage = {
       this.modal.style.visibility = "hidden"
    },
    generateDOM(number, collection) {
-      if (document.URL.includes(`${collection}`)) {
+      const location = window.location.pathname.split('/')[2]
+
+      if (location === `${collection}.html`) {
          const div = document.createElement('div')
          div.classList.add(`catalog__section`)
          div.classList.add(`catalog__section--subpage`)
@@ -125,10 +157,12 @@ const subpage = {
          this.handleModal(subpageImg)
       }
    },
-   generateImages(photosNumber, callback, collection) {
-      for (let i = 1; i <= photosNumber; i++) {
-         callback.call(this, i, collection)
-      }
+   generateImages() {
+      this.images.forEach(({ collection, photosNumber }) => {
+         for (let i = 1; i <= photosNumber; i++) {
+            this.generateDOM.call(this, i, collection)
+         }
+      })
    },
    setFooterDate() {
       this.footerDate.textContent = new Date().getFullYear()

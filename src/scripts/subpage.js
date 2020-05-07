@@ -51,13 +51,7 @@ const subpage = {
       this.modalRightArrow = document.querySelector('.catalog__modal__rightArrow')
       this.modalLeftArrow = document.querySelector('.catalog__modal__leftArrow')
 
-      // this.subpageImages = []
-
       this.footerDate = document.querySelector('.footer__date')
-
-      // this.images.forEach(({ name, number }) => {
-      //    this.generateImages(number, this.generateDOM, name)
-      // })
 
       window.addEventListener("scroll", () => {
          if (window.scrollY >= 300) {
@@ -77,14 +71,6 @@ const subpage = {
          this.hiddenMenu.classList.toggle('menu__hidden--active')
          this.hamburger.classList.toggle('menu__burger--active')
       })
-
-      // this.handleModal(this.subpageImages)
-
-      this.modal.addEventListener('click', (e) => {
-         if (e.target.id === 'catalog_modal') this.hideModal()
-      })
-
-      // this.modalCloseBtn.addEventListener('click', () => this.hideModal())
 
       document.addEventListener('click', (e) => {
          if (e.target.id === 'menu-link')
@@ -146,14 +132,17 @@ const subpage = {
       this.toggleHamburger()
       this.generateDOM()
    },
+
    toggleHamburger() {
       this.hiddenMenuLinks.forEach(link => link.addEventListener('click', () => {
          this.hiddenMenu.classList.toggle('menu__hidden--active')
       }))
    },
+
    handleModal(subpageImages) {
       subpageImages.forEach((img, index) => {
          img.addEventListener('click', () => {
+
             const handleRightArrowModal = () => {
                console.log(indexValue)
                if (indexValue === subpageImages.length - 1) {
@@ -163,7 +152,7 @@ const subpage = {
                this.modalImage.setAttribute('src', srcValue)
             }
 
-            const handleLeftArrowModal = (indexValue, subpageImages) => {
+            const handleLeftArrowModal = () => {
                console.log(indexValue)
                if (indexValue === 0) {
                   indexValue = subpageImages.length
@@ -172,30 +161,29 @@ const subpage = {
                this.modalImage.setAttribute('src', srcValue)
             }
 
-            this.modal.style.visibility = "visible";
             let indexValue = index;
             let srcValue = subpageImages[index].dataset.src
+
+            this.modal.style.visibility = "visible";
             this.modalImage.setAttribute('src', srcValue)
 
             this.modalRightArrow.addEventListener('click', handleRightArrowModal)
-
-            this.modalLeftArrow.addEventListener('click', () => handleLeftArrowModal(indexValue, subpageImages))
-            this.modalCloseBtn.addEventListener('click', () => this.hideModal())
+            this.modalLeftArrow.addEventListener('click', handleLeftArrowModal)
+            this.modalCloseBtn.addEventListener('click', () => this.hideModal({ handleRightArrowModal, handleLeftArrowModal }))
             this.modalCloseBtn.addEventListener('click', () => this.modalRightArrow.removeEventListener('click', handleRightArrowModal))
-            // this.modalCloseBtn.addEventListener('click', () => this.hideModal())
-            // this.modalCloseBtn.addEventListener('click', () => this.hideModal())
-            // document.addEventListener('keydown', (e) => {
-            //    if (e.keyCode === 39) handleRightArrowModal()
-            //    else if (e.keyCode === 37) handleLeftArrowModal()
-            // })
-
+            this.modalCloseBtn.addEventListener('click', () => this.modalLeftArrow.removeEventListener('click', handleLeftArrowModal))
+            this.modal.addEventListener('click', (e) => {
+               if (e.target.id === 'catalog_modal') this.hideModal({ handleRightArrowModal, handleLeftArrowModal })
+            })
          })
       })
    },
-   hideModal() {
+
+   hideModal(arrowHandlers) {
+      const { handleRightArrowModal, handleLeftArrowModal } = arrowHandlers
+      this.modalRightArrow.removeEventListener('click', handleRightArrowModal)
+      this.modalLeftArrow.removeEventListener('click', handleLeftArrowModal)
       this.modal.style.visibility = "hidden"
-      this.modalRightArrow.removeEventListener('click', () => this.handleRightArrowModal(indexValue, subpageImages))
-      this.modalLeftArrow.removeEventListener('click', () => this.handleLeftArrowModal(indexValue, subpageImages))
    },
 
    generateCollectionImages(photosNumber, collection) {
@@ -221,18 +209,15 @@ const subpage = {
                this.handleModal(subpageImages)
             }
          }
-
-         // console.log(this.subpageImages)
-         // let subpageImages = document.querySelectorAll('.catalog__section--subpage__img')
-
-         // this.handleModal(subpageImages)
       }
    },
+
    generateDOM() {
       this.images.forEach(({ collection, photosNumber }) => {
          this.generateCollectionImages.call(this, photosNumber, collection)
       })
    },
+
    setFooterDate() {
       this.footerDate.textContent = new Date().getFullYear()
    }

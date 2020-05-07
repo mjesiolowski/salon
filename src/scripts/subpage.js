@@ -144,7 +144,6 @@ const subpage = {
          img.addEventListener('click', () => {
 
             const handleRightArrowModal = () => {
-               console.log(indexValue)
                if (indexValue === subpageImages.length - 1) {
                   indexValue = -1
                }
@@ -153,7 +152,6 @@ const subpage = {
             }
 
             const handleLeftArrowModal = () => {
-               console.log(indexValue)
                if (indexValue === 0) {
                   indexValue = subpageImages.length
                }

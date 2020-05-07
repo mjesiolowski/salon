@@ -1,4 +1,37 @@
 const subpage = {
+   images: [
+      {
+         collection: 'duber',
+         photosNumber: 158,
+      }, {
+         collection: 'dodatki',
+         photosNumber: 5,
+      }, {
+         collection: 'plus_size',
+         photosNumber: 31,
+      }, {
+         collection: 'sedinum_bridal',
+         photosNumber: 52,
+      }, {
+         collection: 'slubne',
+         photosNumber: 13,
+      }, {
+         collection: 'wizytowe',
+         photosNumber: 45,
+      }, {
+         collection: 'otwarcie',
+         photosNumber: 4,
+      }, {
+         collection: 'sedinum_bridal_2020',
+         photosNumber: 11,
+      }, {
+         collection: 'annais_bridal_2020',
+         photosNumber: 17,
+      }, {
+         collection: 'modeca_2020',
+         photosNumber: 11,
+      },
+   ],
    init() {
       this.menu = document.querySelector('.menu')
       this.menuLogo = document.querySelector('.menu__logo')
@@ -31,19 +64,13 @@ const subpage = {
             this.menuTitle.style.fontSize = "1.4rem"
          }
       }, {
-            passive: true
-         })
+         passive: true
+      })
 
       this.hamburger.addEventListener('click', () => {
          this.hiddenMenu.classList.toggle('menu__hidden--active')
          this.hamburger.classList.toggle('menu__burger--active')
       })
-
-      this.modal.addEventListener('click', (e) => {
-         if (e.target.id === 'catalog_modal') this.hideModal()
-      })
-
-      this.modalCloseBtn.addEventListener('click', () => this.hideModal())
 
       document.addEventListener('click', (e) => {
          if (e.target.id === 'menu-link')
@@ -51,85 +78,144 @@ const subpage = {
          else this.dropdownList.classList.remove('menu__dropdown__list--active')
       })
 
+      document.addEventListener("DOMContentLoaded", function () {
+         let lazyloadImages;
+
+         if ("IntersectionObserver" in window) {
+            lazyloadImages = document.querySelectorAll(".lazy");
+            const imageObserver = new IntersectionObserver(function (entries, observer) {
+               entries.forEach(function (entry) {
+                  if (entry.isIntersecting) {
+                     const image = entry.target;
+                     image.src = image.dataset.src;
+                     image.classList.remove("lazy");
+                     imageObserver.unobserve(image);
+                  }
+               });
+            });
+
+            lazyloadImages.forEach(function (image) {
+               imageObserver.observe(image);
+            });
+         } else {
+            let lazyloadThrottleTimeout;
+            lazyloadImages = document.querySelectorAll(".lazy");
+
+            function lazyload() {
+               if (lazyloadThrottleTimeout) {
+                  clearTimeout(lazyloadThrottleTimeout);
+               }
+
+               lazyloadThrottleTimeout = setTimeout(function () {
+                  const scrollTop = window.pageYOffset;
+                  lazyloadImages.forEach(function (img) {
+                     if (img.offsetTop < (window.innerHeight + scrollTop)) {
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                     }
+                  });
+                  if (lazyloadImages.length == 0) {
+                     document.removeEventListener("scroll", lazyload);
+                     window.removeEventListener("resize", lazyload);
+                     window.removeEventListener("orientationChange", lazyload);
+                  }
+               }, 20);
+            }
+
+            document.addEventListener("scroll", lazyload);
+            window.addEventListener("resize", lazyload);
+            window.addEventListener("orientationChange", lazyload);
+         }
+      })
+
       this.setFooterDate()
       this.toggleHamburger()
-      this.generateImages(158, this.generateDOM, 'duber')
-      this.generateImages(5, this.generateDOM, 'dodatki')
-      this.generateImages(31, this.generateDOM, 'plus_size')
-      this.generateImages(52, this.generateDOM, 'sedinum_bridal')
-      this.generateImages(13, this.generateDOM, 'slubne')
-      this.generateImages(45, this.generateDOM, 'wizytowe')
-      this.generateImages(4, this.generateDOM, 'otwarcie')
-
+      this.generateDOM()
    },
+
    toggleHamburger() {
       this.hiddenMenuLinks.forEach(link => link.addEventListener('click', () => {
          this.hiddenMenu.classList.toggle('menu__hidden--active')
       }))
    },
-   handleModal(subpageImg) {
-      return subpageImg.forEach((img, index) => {
-         img.addEventListener('click', () => {
-            this.modal.style.visibility = "visible";
-            let indexValue = index;
-            let srcValue = subpageImg[index].attributes.src.nodeValue
 
-            this.modalImage.setAttribute('src', srcValue)
+   handleModal(subpageImages) {
+      subpageImages.forEach((img, index) => {
+         img.addEventListener('click', () => {
 
             const handleRightArrowModal = () => {
-               if (indexValue === subpageImg.length - 1) {
+               if (indexValue === subpageImages.length - 1) {
                   indexValue = -1
                }
-               srcValue = subpageImg[++indexValue].attributes.src.nodeValue
+               srcValue = subpageImages[++indexValue].dataset.src
                this.modalImage.setAttribute('src', srcValue)
             }
 
             const handleLeftArrowModal = () => {
                if (indexValue === 0) {
-                  indexValue = subpageImg.length
+                  indexValue = subpageImages.length
                }
-               srcValue = subpageImg[--indexValue].attributes.src.nodeValue
+               srcValue = subpageImages[--indexValue].dataset.src
                this.modalImage.setAttribute('src', srcValue)
             }
 
+            let indexValue = index;
+            let srcValue = subpageImages[index].dataset.src
+
+            this.modal.style.visibility = "visible";
+            this.modalImage.setAttribute('src', srcValue)
+
             this.modalRightArrow.addEventListener('click', handleRightArrowModal)
-
             this.modalLeftArrow.addEventListener('click', handleLeftArrowModal)
-
-            document.addEventListener('keydown', (e) => {
-               if (e.keyCode === 39) handleRightArrowModal()
-               else if (e.keyCode === 37) handleLeftArrowModal()
+            this.modalCloseBtn.addEventListener('click', () => this.hideModal({ handleRightArrowModal, handleLeftArrowModal }))
+            this.modalCloseBtn.addEventListener('click', () => this.modalRightArrow.removeEventListener('click', handleRightArrowModal))
+            this.modalCloseBtn.addEventListener('click', () => this.modalLeftArrow.removeEventListener('click', handleLeftArrowModal))
+            this.modal.addEventListener('click', (e) => {
+               if (e.target.id === 'catalog_modal') this.hideModal({ handleRightArrowModal, handleLeftArrowModal })
             })
-
          })
       })
    },
-   hideModal() {
+
+   hideModal(arrowHandlers) {
+      const { handleRightArrowModal, handleLeftArrowModal } = arrowHandlers
+      this.modalRightArrow.removeEventListener('click', handleRightArrowModal)
+      this.modalLeftArrow.removeEventListener('click', handleLeftArrowModal)
       this.modal.style.visibility = "hidden"
    },
-   generateDOM(number, collection) {
-      if (document.URL.includes(`${collection}`)) {
-         const div = document.createElement('div')
-         div.classList.add(`catalog__section`)
-         div.classList.add(`catalog__section--subpage`)
-         catalog.appendChild(div)
 
-         const img = document.createElement('img')
-         img.classList.add('catalog__section--subpage__img')
-         img.setAttribute('alt', 'wedding dress photo')
-         img.setAttribute('src', `../images/${collection}/${collection} (${number++}).jpg`)
-         div.appendChild(img)
+   generateCollectionImages(photosNumber, collection) {
+      const location = window.location.pathname.split('/')[2]
 
-         let subpageImg = document.querySelectorAll('.catalog__section--subpage__img')
+      if (location === `${collection}.html`) {
+         for (let i = 1; i <= photosNumber; i++) {
+            const div = document.createElement('div')
+            const img = document.createElement('img')
 
-         this.handleModal(subpageImg)
+            div.classList.add(`catalog__section`)
+            div.classList.add(`catalog__section--subpage`)
+            catalog.appendChild(div)
+
+            img.classList.add('catalog__section--subpage__img')
+            img.classList.add('lazy')
+            img.setAttribute('alt', 'wedding dress photo')
+            img.setAttribute('data-src', `../images/${collection}/${collection} (${i}).jpg`)
+            div.appendChild(img)
+
+            if (i === photosNumber) {
+               let subpageImages = document.querySelectorAll('.catalog__section--subpage__img')
+               this.handleModal(subpageImages)
+            }
+         }
       }
    },
-   generateImages(photosNumber, callback, collection) {
-      for (let i = 1; i <= photosNumber; i++) {
-         callback.call(this, i, collection)
-      }
+
+   generateDOM() {
+      this.images.forEach(({ collection, photosNumber }) => {
+         this.generateCollectionImages.call(this, photosNumber, collection)
+      })
    },
+
    setFooterDate() {
       this.footerDate.textContent = new Date().getFullYear()
    }

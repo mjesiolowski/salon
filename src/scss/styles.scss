@@ -34,8 +34,11 @@ body:before {
    display: flex;
    flex-wrap: wrap;
    overflow: hidden;
+   min-height: 100vh;
+   flex-direction: column;
 
    &--subpage {
+      flex-direction: row;
       background: url('../images/bg2.jpg') no-repeat center fixed;
       background-size: cover;
    }
@@ -188,9 +191,10 @@ body:before {
 //INTRO
 
 .intro {
-   flex-basis: 100vw;
+   display: flex;
+   flex-direction: column;
    min-height: 100vh;
-   min-width: 32rem;
+   justify-content: center;
 
    &--subpage {
       min-height: auto;
@@ -202,11 +206,9 @@ body:before {
 
    &__title {
       position: relative;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       width: 50rem;
       padding: 1rem;
+      margin: 0 auto;
       @include basicBoxStyle();
       background-color: $barelyTransparentBlack;
       font-size: 3rem;
@@ -242,29 +244,19 @@ body:before {
 
       &__link {
          position: absolute;
-         bottom: -20%;
+         top: 100%;
          left: 50%;
-         transform: translate(-50%, 50%);
+         transform: translate(-50%, 10%);
          border: none;
          background-color: transparent;
          color: $barelyTransparentBlack;
          font-size: 10rem;
          animation: arrows 1.5s infinite linear;
 
-         &--subpage {
-            bottom: -100%;
-            animation: arrows--subpage 1.5s infinite linear;
-         }
 
          @keyframes arrows {
             to {
-               bottom: -40%;
-            }
-         }
-
-         @keyframes arrows--subpage {
-            to {
-               bottom: -150%;
+               transform: translate(-50%, 40%);
             }
          }
       }
@@ -341,12 +333,12 @@ body:before {
 .events {
    display: flex;
    flex-wrap: wrap;
-   flex-basis: 100vw;
+   // flex-basis: 100vw;
+   flex-grow: 1;
    justify-content: center;
    align-items: center;
    padding: 10rem 2rem;
    background-color: $transparentBlack;
-
 
    &__modal {
       position: fixed;
@@ -557,7 +549,7 @@ body:before {
 //FOOTER
 
 .footer {
-   min-height: 3vh;
+   height: 3vh;
    width: 100vw;
    background-color: black;
    color: $white;

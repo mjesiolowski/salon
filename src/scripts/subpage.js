@@ -50,80 +50,95 @@ const subpage = {
 
       this.footerDate = document.querySelector('.footer__date')
 
-      window.addEventListener("scroll", () => {
-         if (window.scrollY >= 300) {
-            this.menu.style.fontSize = "1.4rem"
-            this.menuLogo.style.fontSize = "1.8rem"
-            this.menuTitle.style.fontSize = "1.2rem"
-         } else {
-            this.menu.style.fontSize = "2rem"
-            this.menuLogo.style.fontSize = "2.3rem"
-            this.menuTitle.style.fontSize = "1.4rem"
-         }
-      }, {
-         passive: true
-      })
+      const resizeMenuBarOnScroll = () => {
+         window.addEventListener("scroll", () => {
+            if (window.scrollY >= 300) {
+               this.menu.style.fontSize = "1.4rem"
+               this.menuLogo.style.fontSize = "1.8rem"
+               this.menuTitle.style.fontSize = "1.2rem"
+            } else {
+               this.menu.style.fontSize = "2rem"
+               this.menuLogo.style.fontSize = "2.3rem"
+               this.menuTitle.style.fontSize = "1.4rem"
+            }
+         }, {
+            passive: true
+         })
+      }
 
-      this.hamburger.addEventListener('click', () => {
-         this.hiddenMenu.classList.toggle('menu__hidden--active')
-         this.hamburger.classList.toggle('menu__burger--active')
-      })
+      const toggleHamburgerClass = () => {
+         this.hamburger.addEventListener('click', () => {
+            this.hiddenMenu.classList.toggle('menu__hidden--active')
+            this.hamburger.classList.toggle('menu__burger--active')
+         })
+      }
 
-      document.addEventListener('click', (e) => {
-         if (e.target.id === 'menu-link')
-            this.dropdownList.classList.toggle('menu__dropdown__list--active')
-         else this.dropdownList.classList.remove('menu__dropdown__list--active')
-      })
+      const toggleDropdownVisibility = () => {
+         document.addEventListener('click', (e) => {
+            if (e.target.id === 'menu-link')
+               this.dropdownList.classList.toggle('menu__dropdown__list--active')
+            else this.dropdownList.classList.remove('menu__dropdown__list--active')
+         })
+      }
 
-      document.addEventListener("DOMContentLoaded", function () {
-         let lazyloadImages;
+      const handleLazyLoading = () => {
+         document.addEventListener("DOMContentLoaded", function () {
+            let lazyloadImages;
 
-         if ("IntersectionObserver" in window) {
-            lazyloadImages = document.querySelectorAll(".lazy");
-            const imageObserver = new IntersectionObserver(function (entries, observer) {
-               entries.forEach(function (entry) {
-                  if (entry.isIntersecting) {
-                     const image = entry.target;
-                     image.src = image.dataset.src;
-                     image.classList.remove("lazy");
-                     imageObserver.unobserve(image);
-                  }
-               });
-            });
-
-            lazyloadImages.forEach(function (image) {
-               imageObserver.observe(image);
-            });
-         } else {
-            let lazyloadThrottleTimeout;
-            lazyloadImages = document.querySelectorAll(".lazy");
-
-            function lazyload() {
-               if (lazyloadThrottleTimeout) {
-                  clearTimeout(lazyloadThrottleTimeout);
-               }
-
-               lazyloadThrottleTimeout = setTimeout(function () {
-                  const scrollTop = window.pageYOffset;
-                  lazyloadImages.forEach(function (img) {
-                     if (img.offsetTop < (window.innerHeight + scrollTop)) {
-                        img.src = img.dataset.src;
-                        img.classList.remove('lazy');
+            if ("IntersectionObserver" in window) {
+               lazyloadImages = document.querySelectorAll(".lazy");
+               const imageObserver = new IntersectionObserver(function (entries, observer) {
+                  entries.forEach(function (entry) {
+                     if (entry.isIntersecting) {
+                        const image = entry.target;
+                        image.src = image.dataset.src;
+                        image.classList.remove("lazy");
+                        imageObserver.unobserve(image);
                      }
                   });
-                  if (lazyloadImages.length == 0) {
-                     document.removeEventListener("scroll", lazyload);
-                     window.removeEventListener("resize", lazyload);
-                     window.removeEventListener("orientationChange", lazyload);
-                  }
-               }, 20);
-            }
+               });
 
-            document.addEventListener("scroll", lazyload);
-            window.addEventListener("resize", lazyload);
-            window.addEventListener("orientationChange", lazyload);
-         }
-      })
+               lazyloadImages.forEach(function (image) {
+                  imageObserver.observe(image);
+               });
+            } else {
+               let lazyloadThrottleTimeout;
+               lazyloadImages = document.querySelectorAll(".lazy");
+
+               function lazyload() {
+                  if (lazyloadThrottleTimeout) {
+                     clearTimeout(lazyloadThrottleTimeout);
+                  }
+
+                  lazyloadThrottleTimeout = setTimeout(function () {
+                     const scrollTop = window.pageYOffset;
+                     lazyloadImages.forEach(function (img) {
+                        if (img.offsetTop < (window.innerHeight + scrollTop)) {
+                           img.src = img.dataset.src;
+                           img.classList.remove('lazy');
+                        }
+                     });
+                     if (lazyloadImages.length == 0) {
+                        document.removeEventListener("scroll", lazyload);
+                        window.removeEventListener("resize", lazyload);
+                        window.removeEventListener("orientationChange", lazyload);
+                     }
+                  }, 20);
+               }
+
+               document.addEventListener("scroll", lazyload);
+               window.addEventListener("resize", lazyload);
+               window.addEventListener("orientationChange", lazyload);
+            }
+         })
+
+      }
+
+      resizeMenuBarOnScroll()
+      toggleHamburgerClass()
+      toggleDropdownVisibility()
+      handleLazyLoading()
+
 
       this.setFooterDate()
       this.toggleHamburger()
@@ -140,7 +155,7 @@ const subpage = {
       subpageImages.forEach((img, index) => {
          img.addEventListener('click', () => {
 
-            const handleRightArrowModal = () => {
+            const handleModalRightArrow = () => {
                if (indexValue === subpageImages.length - 1) {
                   indexValue = -1
                }
@@ -148,12 +163,22 @@ const subpage = {
                this.modalImage.setAttribute('src', srcValue)
             }
 
-            const handleLeftArrowModal = () => {
+            const handleModalLeftArrow = () => {
                if (indexValue === 0) {
                   indexValue = subpageImages.length
                }
                srcValue = subpageImages[--indexValue].dataset.src
                this.modalImage.setAttribute('src', srcValue)
+            }
+
+            const handleClosingModal = () => {
+               this.modalCloseBtn.addEventListener('click', () => this.hideModal({ handleRightArrowModal: handleModalRightArrow, handleLeftArrowModal: handleModalLeftArrow }))
+               this.modalCloseBtn.addEventListener('click', () => this.modalRightArrow.removeEventListener('click', handleModalRightArrow))
+               this.modalCloseBtn.addEventListener('click', () => this.modalLeftArrow.removeEventListener('click', handleModalLeftArrow))
+
+               this.modal.addEventListener('click', (e) => {
+                  if (e.target.id === 'catalog_modal') this.hideModal({ handleRightArrowModal: handleModalRightArrow, handleLeftArrowModal: handleModalLeftArrow })
+               })
             }
 
             let indexValue = index;
@@ -162,14 +187,10 @@ const subpage = {
             this.modal.style.visibility = "visible";
             this.modalImage.setAttribute('src', srcValue)
 
-            this.modalRightArrow.addEventListener('click', handleRightArrowModal)
-            this.modalLeftArrow.addEventListener('click', handleLeftArrowModal)
-            this.modalCloseBtn.addEventListener('click', () => this.hideModal({ handleRightArrowModal, handleLeftArrowModal }))
-            this.modalCloseBtn.addEventListener('click', () => this.modalRightArrow.removeEventListener('click', handleRightArrowModal))
-            this.modalCloseBtn.addEventListener('click', () => this.modalLeftArrow.removeEventListener('click', handleLeftArrowModal))
-            this.modal.addEventListener('click', (e) => {
-               if (e.target.id === 'catalog_modal') this.hideModal({ handleRightArrowModal, handleLeftArrowModal })
-            })
+            this.modalRightArrow.addEventListener('click', handleModalRightArrow)
+            this.modalLeftArrow.addEventListener('click', handleModalLeftArrow)
+
+            handleClosingModal()
          })
       })
    },

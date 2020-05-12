@@ -45,7 +45,7 @@ gulp.task('distFonts', () =>
 );
 
 gulp.task('nano', function () {
-   return gulp.src('dist/css/styles.css')
+   return gulp.src('src/css/styles.css')
       .pipe(sourcemaps.init())
       .pipe(cssnano())
       .pipe(sourcemaps.write('.'))

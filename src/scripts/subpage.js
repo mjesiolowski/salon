@@ -136,7 +136,7 @@ const subpage = {
       }))
    },
 
-   handleModal(subpageImages) {
+   activateModal(subpageImages) {
       subpageImages.forEach((img, index) => {
          img.addEventListener('click', () => {
 
@@ -181,33 +181,43 @@ const subpage = {
       this.modal.style.visibility = "hidden"
    },
 
-   generateCollectionImages(photosNumber, collection) {
-      const location = window.location.pathname.split('/')[2]
+   generateCollectionImages(photosNumber, collectionName) {
+      const createImgElement = (collectionName, numberName) => {
+         const img = document.createElement('img')
+         img.classList.add('catalog__section--subpage__img')
+         img.classList.add('lazy')
+         img.setAttribute('alt', 'wedding dress photo')
+         img.setAttribute('data-src', `../images/${collectionName}/${collectionName} (${numberName}).jpg`)
+
+         return img
+      }
+
+      const createImgWrapperDivElement = () => {
+         const div = document.createElement('div')
+         div.classList.add(`catalog__section`)
+         div.classList.add(`catalog__section--subpage`)
+         catalog.appendChild(div)
+
+         return div
+      }
+
       const renderModalImages = () => {
          let subpageImages = document.querySelectorAll('.catalog__section--subpage__img')
-         this.handleModal(subpageImages)
+         this.activateModal(subpageImages)
       }
 
-      if (location === `${collection}.html` && photosNumber === null) {
+
+      if (photosNumber === null) {
          renderModalImages()
       }
-      else if (location === `${collection}.html`) {
+      else {
          for (let i = 1; i <= photosNumber; i++) {
-            const div = document.createElement('div')
-            const img = document.createElement('img')
-
-            div.classList.add(`catalog__section`)
-            div.classList.add(`catalog__section--subpage`)
-            catalog.appendChild(div)
-
-            img.classList.add('catalog__section--subpage__img')
-            img.classList.add('lazy')
-            img.setAttribute('alt', 'wedding dress photo')
-            img.setAttribute('data-src', `../images/${collection}/${collection} (${i}).jpg`)
+            const div = createImgWrapperDivElement()
+            const img = createImgElement(collectionName, i)
 
             div.appendChild(img)
 
-            if (i === photosNumber) {
+            if (photosNumber === i) {
                renderModalImages()
             }
          }
@@ -215,8 +225,14 @@ const subpage = {
    },
 
    generateDOM() {
+      const location = window.location.pathname.split('/')[2]
+
       this.images.forEach(({ collection, photosNumber }) => {
-         this.generateCollectionImages.call(this, photosNumber, collection)
+         const isCollectionSubpage = location === `${collection}.html`
+
+         if (isCollectionSubpage) {
+            this.generateCollectionImages.call(this, photosNumber, collection)
+         }
       })
    },
 

@@ -1,7 +1,7 @@
 # NataliQ
 
 ## link
-https://nataliq.herokuapp.com
+https://nataliq.pl
 
 ## info
 This is my first commercial project, it presents the offer of an exclusive wedding dress salon. My goal was to make this website readable, easy to navigate, eye-catching, consistent and fully responsive.

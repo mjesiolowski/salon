@@ -369,7 +369,8 @@ body:before {
       color: #efe8e8;
       color: #f9c532;
       font-size: 2.3rem;
-      text-align: center; }
+      text-align: center;
+      cursor: auto; }
     .catalog__section__link,
     .events__section__link {
       position: absolute;

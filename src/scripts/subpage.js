@@ -16,20 +16,17 @@ const subpage = {
          collection: 'slubne',
          photosNumber: 13,
       }, {
-         collection: 'wizytowe',
-         photosNumber: 45,
-      }, {
          collection: 'otwarcie',
          photosNumber: 4,
       }, {
          collection: 'sedinum_bridal_2020',
-         photosNumber: 11,
+         photosNumber: null,
       }, {
          collection: 'annais_bridal_2020',
-         photosNumber: 17,
+         photosNumber: null,
       }, {
          collection: 'modeca_2020',
-         photosNumber: 11,
+         photosNumber: null,
       },
    ],
    init() {
@@ -186,8 +183,15 @@ const subpage = {
 
    generateCollectionImages(photosNumber, collection) {
       const location = window.location.pathname.split('/')[2]
+      const renderModalImages = () => {
+         let subpageImages = document.querySelectorAll('.catalog__section--subpage__img')
+         this.handleModal(subpageImages)
+      }
 
-      if (location === `${collection}.html`) {
+      if (location === `${collection}.html` && photosNumber === null) {
+         renderModalImages()
+      }
+      else if (location === `${collection}.html`) {
          for (let i = 1; i <= photosNumber; i++) {
             const div = document.createElement('div')
             const img = document.createElement('img')
@@ -200,11 +204,11 @@ const subpage = {
             img.classList.add('lazy')
             img.setAttribute('alt', 'wedding dress photo')
             img.setAttribute('data-src', `../images/${collection}/${collection} (${i}).jpg`)
+
             div.appendChild(img)
 
             if (i === photosNumber) {
-               let subpageImages = document.querySelectorAll('.catalog__section--subpage__img')
-               this.handleModal(subpageImages)
+               renderModalImages()
             }
          }
       }
